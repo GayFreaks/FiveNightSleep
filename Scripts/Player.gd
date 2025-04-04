@@ -22,7 +22,7 @@ func _unhandled_input(event):
 		var player_on_screen = get_global_transform_with_canvas().get_origin()
 		var mouse_on_screen = get_viewport().get_mouse_position()
 		mouse_pos_rel_player = mouse_on_screen-player_on_screen
-		mouse_pos_rel_player = mouse_pos_rel_player.clamped(100)
+		mouse_pos_rel_player = mouse_pos_rel_player.normalized() * 60
 		mouse_rot_rel_player = mouse_on_screen.angle_to_point(player_on_screen)
 		direction_object.position = mouse_pos_rel_player
 		direction_object.rotation = mouse_rot_rel_player
