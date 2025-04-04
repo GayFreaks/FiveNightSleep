@@ -14,6 +14,13 @@ config/name="FiveNightsToSleep"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/width=1920
+window/size/height=1080
+window/size/borderless=true
+window/size/fullscreen=true
+
 [input]
 
 Move_Up={

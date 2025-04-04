@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var speed = 200  # speed in pixels/sec
+var speed = 500  # speed in pixels/sec
 var velocity = Vector2.ZERO
 
 func get_input():
