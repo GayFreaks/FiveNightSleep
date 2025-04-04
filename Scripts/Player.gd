@@ -8,6 +8,10 @@ var velocity = Vector2.ZERO
 var mouse_pos_rel_player
 var mouse_rot_rel_player
 
+func _ready():
+	# Move to main later
+	Engine.set_target_fps(60) 
+
 func get_input():
 	var movement_direction = Vector2(Input.get_axis("Move_Left", "Move_Right"), Input.get_axis("Move_Up", "Move_Down"))
 
