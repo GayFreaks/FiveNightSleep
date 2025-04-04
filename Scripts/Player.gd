@@ -2,6 +2,7 @@ extends KinematicBody2D
 class_name Player
 
 onready var direction_object = $Direction
+onready var pillow = $Direction/Pillow
 
 var speed = 500  # speed in pixels/sec
 var velocity = Vector2.ZERO
@@ -26,6 +27,11 @@ func _unhandled_input(event):
 		mouse_rot_rel_player = mouse_on_screen.angle_to_point(player_on_screen)
 		direction_object.position = mouse_pos_rel_player
 		direction_object.rotation = mouse_rot_rel_player
+
+		if mouse_pos_rel_player.x < 0:
+			pillow.scale.y = -1
+		else:
+			pillow.scale.y = 1
 
 		if event is InputEventMouseButton:
 			if event.button_index == 1 && event.pressed:

@@ -30,7 +30,7 @@ current = true
 [node name="Pillow" type="Area2D" parent="Direction"]
 
 [node name="Sprite" type="Sprite" parent="Direction/Pillow"]
-position = Vector2( 183, 153 )
+position = Vector2( 75, -35 )
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 4 )
 
