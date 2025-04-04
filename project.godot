@@ -8,10 +8,20 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://Scripts/Player.gd"
+} ]
+_global_script_class_icons={
+"Player": ""
+}
+
 [application]
 
 config/name="FiveNightsToSleep"
-run/main_scene="res://Main.tscn"
+run/main_scene="res://Levels/Overworld.tscn"
 config/icon="res://icon.png"
 
 [display]
@@ -19,7 +29,6 @@ config/icon="res://icon.png"
 window/size/width=1920
 window/size/height=1080
 window/size/borderless=true
-window/size/fullscreen=true
 
 [input]
 
