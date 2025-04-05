@@ -47,6 +47,7 @@ config/icon="res://icon.png"
 Loading="*res://Loading.tscn"
 EnemyDirector="*res://Enemies/EnemyDirector.gd"
 SoundManeger="*res://SoundManeger.tscn"
+GameState="*res://Scripts/GameState.gd"
 
 [display]
 

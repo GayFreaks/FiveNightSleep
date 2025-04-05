@@ -1,9 +1,8 @@
 extends KinematicBody2D
 class_name Player
 
-export var health = 100
-
 onready var loader = get_node("/root/Loading")
+onready var state = get_node("/root/GameState")
 onready var enemy_director = get_node("/root/EnemyDirector")
 onready var direction_object = $Direction
 onready var pillow = $Direction/Pillow
@@ -26,7 +25,7 @@ var mouse_rot_rel_player
 func _ready():
 	enemy_director.current_player = self
 	change_weapon(weapon_index)
-	health_bar.value = health
+	health_bar.value = state.player_health
 	death_screen.hide()
 
 func get_input():
@@ -90,12 +89,12 @@ func _physics_process(_delta):
 	cooldown_display.value = cooldown.time_left/cooldown.wait_time
 
 func damage(amount):
-	health -= amount
+	state.player_health -= amount
 
-	if health <= 0:
+	if state.player_health <= 0:
 		death_screen.show()
 
-	health_bar.value = health
+	health_bar.value = state.player_health
 
 func _on_DeathButton_pressed():
 	loader.goto_scene_path("res://Main.tscn")
