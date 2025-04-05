@@ -1,6 +1,7 @@
 extends KinematicBody2D
 class_name Player
 
+onready var enemy_director = get_node("/root/EnemyDirector")
 onready var direction_object = $Direction
 onready var pillow = $Direction/Pillow
 onready var hard_pillow = $Direction/HardPillow
@@ -14,6 +15,7 @@ var mouse_pos_rel_player
 var mouse_rot_rel_player
 
 func _ready():
+	enemy_director.current_player = self
 	change_weapon(weapon_index)
 
 func get_input():

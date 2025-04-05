@@ -1,6 +1,6 @@
 extends Area2D
 
-onready var enemy_directory = get_node("/root/EnemyDirector")
+onready var enemy_director = get_node("/root/EnemyDirector")
 onready var loader = get_node("/root/Loading")
 onready var lock_sprite = $Lock
 onready var lock_collision = $StaticBody2D/CollisionShape2D
@@ -12,7 +12,7 @@ export(Texture) var lock_icon
 export(Texture) var unlock_icon
 
 func _ready():
-	enemy_directory.current_door = self
+	enemy_director.current_door = self
 	change_lock(locked)
 
 func change_lock(new_status):
@@ -29,5 +29,5 @@ func change_lock(new_status):
 func _on_Door_body_entered(body:Node):
 	if body.is_in_group("Player"):
 		print("res://Levels/" + level_name + ".tscn")
-		enemy_directory.current_door = null
+		enemy_director.current_door = null
 		loader.goto_scene_path("res://Levels/" + level_name + ".tscn")
