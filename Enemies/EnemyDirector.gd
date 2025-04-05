@@ -9,7 +9,7 @@ var current_player = null
 func _ready():
 	var timer := Timer.new()
 	add_child(timer)
-	timer.wait_time = 5
+	timer.wait_time = 1
 	timer.connect("timeout", self, "enemy_calc")
 	timer.start()
 
