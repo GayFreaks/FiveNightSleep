@@ -21,10 +21,10 @@ polygon = PoolVector2Array( -183, -1729, -278, -666, -803, -712, -976, -646, -10
 position = Vector2( 633, 126 )
 
 [node name="Cat2" parent="ElementContainer" instance=ExtResource( 3 )]
-position = Vector2( 27, -242 )
+position = Vector2( 206, -292 )
 
 [node name="Cat3" parent="ElementContainer" instance=ExtResource( 3 )]
-position = Vector2( -606, -287 )
+position = Vector2( -687, -305 )
 
 [node name="Door" parent="ElementContainer" instance=ExtResource( 4 )]
 position = Vector2( -143, -837 )

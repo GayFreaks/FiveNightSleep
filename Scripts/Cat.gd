@@ -35,7 +35,7 @@ func goal_change(new_goal):
 		elif new_goal == goals.STALK:	
 			rng.randomize()
 			var random_degree = rng.randf_range(0.0, 360.0)
-			var random_point = Vector2(cos(deg2rad(random_degree)),sin(deg2rad(random_degree))) * 500
+			var random_point = Vector2(cos(deg2rad(random_degree)),sin(deg2rad(random_degree))) * 400
 			target_location = enemy_director.current_player.position + random_point
 
 
@@ -66,11 +66,11 @@ func damage(amount, knockback):
 func _physics_process(_delta):
 	apply_central_impulse((target_location - position).normalized() * speed)
 
-	if position.distance_to(target_location) < 50:
-		if goal == goals.CHARGE:
-			goal = goals.NONE
-		elif goal == goals.STALK:
-			goal = goals.NONE
+	# if position.distance_to(target_location) < 50:
+	# 	if goal == goals.CHARGE:
+	# 		goal = goals.NONE
+	# 	elif goal == goals.STALK:
+	# 		goal = goals.NONE
 
 func _on_AttackDetect_body_entered(body:Node):
 	if body.is_in_group("Player"):
