@@ -23,31 +23,31 @@ func enemy_died(enemy):
 func enemy_calc():
 	match current_enemies.size():
 		1:
-			current_enemies[0].state = Cat.states.CHARGE
+			current_enemies[0].goal = Cat.goals.CHARGE
 		2:
-			current_enemies[0].state = Cat.states.CHARGE
-			current_enemies[1].state = Cat.states.STALK
+			current_enemies[0].goal = Cat.goals.CHARGE
+			current_enemies[1].goal = Cat.goals.STALK
 		3:
-			current_enemies[0].state = Cat.states.STALK
-			current_enemies[1].state = Cat.states.JUMP
-			current_enemies[2].state = Cat.states.STALK
+			current_enemies[0].goal = Cat.goals.STALK
+			current_enemies[1].goal = Cat.goals.JUMP
+			current_enemies[2].goal = Cat.goals.STALK
 		4:
-			current_enemies[0].state = Cat.states.CHARGE
-			current_enemies[1].state = Cat.states.STALK
-			current_enemies[2].state = Cat.states.JUMP
-			current_enemies[3].state = Cat.states.STALK
+			current_enemies[0].goal = Cat.goals.CHARGE
+			current_enemies[1].goal = Cat.goals.STALK
+			current_enemies[2].goal = Cat.goals.JUMP
+			current_enemies[3].goal = Cat.goals.STALK
 		5:
-			current_enemies[0].state = Cat.states.CHARGE
-			current_enemies[1].state = Cat.states.STALK
-			current_enemies[2].state = Cat.states.JUMP
-			current_enemies[3].state = Cat.states.STALK
-			current_enemies[4].state = Cat.states.STALK
+			current_enemies[0].goal = Cat.goals.CHARGE
+			current_enemies[1].goal = Cat.goals.STALK
+			current_enemies[2].goal = Cat.goals.JUMP
+			current_enemies[3].goal = Cat.goals.STALK
+			current_enemies[4].goal = Cat.goals.STALK
 		6:
-			current_enemies[0].state = Cat.states.JUMP
-			current_enemies[1].state = Cat.states.JUMP
-			current_enemies[2].state = Cat.states.STALK
-			current_enemies[3].state = Cat.states.STALK
-			current_enemies[4].state = Cat.states.STALK
-			current_enemies[5].state = Cat.states.STALK
+			current_enemies[0].goal = Cat.goals.JUMP
+			current_enemies[1].goal = Cat.goals.JUMP
+			current_enemies[2].goal = Cat.goals.STALK
+			current_enemies[3].goal = Cat.goals.STALK
+			current_enemies[4].goal = Cat.goals.STALK
+			current_enemies[5].goal = Cat.goals.STALK
 		_:
 			pass
