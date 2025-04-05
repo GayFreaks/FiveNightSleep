@@ -1,11 +1,17 @@
 extends KinematicBody2D
 class_name Player
 
+export var health = 100
+
 onready var enemy_director = get_node("/root/EnemyDirector")
 onready var direction_object = $Direction
 onready var pillow = $Direction/Pillow
 onready var hard_pillow = $Direction/HardPillow
 onready var bed = $Direction/Bed
+onready var health_bar = $CanvasLayer/UI/HealthBar
+onready var cooldown_display = $CanvasLayer/UI/Cooldown
+onready var cooldown = $ShootCooldown
+
 var weapon_index = 0
 var current_weapon = null
 
@@ -17,6 +23,7 @@ var mouse_rot_rel_player
 func _ready():
 	enemy_director.current_player = self
 	change_weapon(weapon_index)
+	health_bar.value = health
 
 func get_input():
 	var movement_direction = Vector2(Input.get_axis("Move_Left", "Move_Right"), Input.get_axis("Move_Up", "Move_Down"))
@@ -72,3 +79,10 @@ func _physics_process(_delta):
 	velocity = Vector2.ZERO
 	velocity = get_input().normalized() * speed
 	velocity = move_and_slide(velocity)
+
+	cooldown_display.value = cooldown.time_left/cooldown.wait_time
+
+func damage(amount):
+	health -= amount
+
+	health_bar.value = health

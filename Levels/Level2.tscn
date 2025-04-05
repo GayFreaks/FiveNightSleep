@@ -18,16 +18,18 @@ polygon = PoolVector2Array( -183, -1729, -265, -668, -803, -712, -976, -646, -10
 
 [node name="ElementContainer" type="YSort" parent="."]
 position = Vector2( -30.1675, 28.0588 )
-rotation = 0.073984
 
 [node name="Cat" parent="ElementContainer" instance=ExtResource( 3 )]
+position = Vector2( 55.8132, -263.906 )
 
 [node name="Cat2" parent="ElementContainer" instance=ExtResource( 3 )]
+position = Vector2( 566.027, 166.558 )
 
 [node name="Cat3" parent="ElementContainer" instance=ExtResource( 3 )]
+position = Vector2( -656.423, -308.382 )
 
 [node name="Door" parent="ElementContainer" instance=ExtResource( 4 )]
-position = Vector2( -162.948, -861.371 )
+position = Vector2( -100.832, -875.059 )
 level_name = "Level3"
 
 [node name="Player" parent="ElementContainer" instance=ExtResource( 2 )]
