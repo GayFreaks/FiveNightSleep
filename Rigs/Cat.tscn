@@ -1339,16 +1339,17 @@ tracks/33/keys = {
 }
 
 [node name="Cat" type="Node2D"]
-position = Vector2( 16, 3 )
+position = Vector2( 12.6034, 28.1985 )
+rotation = 0.0562464
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../Skeleton2D/hip/chest/Arm L/Front leg L")
 anims/CatLaunch = SubResource( 4 )
 anims/CatLean = SubResource( 3 )
 anims/CatWalk = SubResource( 1 )
 anims/RESET = SubResource( 2 )
 
 [node name="CatWalkCycle" type="Sprite" parent="."]
+visible = false
 modulate = Color( 1, 1, 1, 0.235294 )
 position = Vector2( 13, -68 )
 scale = Vector2( 3.01071, 2.58889 )
@@ -1444,101 +1445,89 @@ __meta__ = {
 
 [node name="hip" type="Bone2D" parent="Skeleton2D"]
 position = Vector2( 25, -38 )
+rotation = -0.314994
 rest = Transform2D( 1, 0, 0, 1, 25, -38 )
 
 [node name="chest" type="Bone2D" parent="Skeleton2D/hip"]
-position = Vector2( -30.1675, 28.0588 )
-rotation = 0.073984
-scale = Vector2( 1, 1 )
+position = Vector2( -30.1793, 21.7343 )
+rotation = 0.793643
 rest = Transform2D( 0.997264, 0.0739165, -0.0739165, 0.997264, -30, 39 )
 
 [node name="Arm L" type="Bone2D" parent="Skeleton2D/hip/chest"]
 position = Vector2( 8.56945, 7.38678 )
-rotation = 0.135977
-scale = Vector2( 1, 1 )
+rotation = -0.179959
 rest = Transform2D( 0.987105, -0.160073, 0.160073, 0.987105, 8.56945, 7.38678 )
 
 [node name="Front leg L" type="Bone2D" parent="Skeleton2D/hip/chest/Arm L"]
 position = Vector2( 12.6034, 28.1985 )
-rotation = 0.0562464
+rotation = 0.959463
 rest = Transform2D( 1, 0, 0, 1, 12.6034, 28.1985 )
 
 [node name="front paw L" type="Bone2D" parent="Skeleton2D/hip/chest/Arm L/Front leg L"]
 position = Vector2( 10.0285, 21.6889 )
-rotation = 2.59236
-scale = Vector2( 1, 1 )
+rotation = 1.93704
 rest = Transform2D( -0.593521, 0.804819, -0.804819, -0.593521, 2.94426, 23.9025 )
 default_length = 6.0
 
 [node name="neck" type="Bone2D" parent="Skeleton2D/hip/chest"]
 position = Vector2( -13.1779, 30.403 )
-rotation = -2.04982
-scale = Vector2( 1, 1 )
+rotation = -2.24472
 rest = Transform2D( -0.281268, -0.959629, 0.959629, -0.281268, -13, 23 )
 
 [node name="Arm R" type="Bone2D" parent="Skeleton2D/hip/chest"]
-position = Vector2( -7.50545, 13.6889 )
-rotation = -3.39615
-scale = Vector2( 1, 1 )
+position = Vector2( -11.3758, 8.86511 )
+rotation = -1.9784
 rest = Transform2D( -0.281268, -0.959629, 0.959629, -0.281268, -11.3758, 8.86511 )
 
 [node name="Front leg R" type="Bone2D" parent="Skeleton2D/hip/chest/Arm R"]
-position = Vector2( -10.39, -2.04401 )
-rotation = 0.00976234
-scale = Vector2( 1, 1 )
+position = Vector2( -24.5143, -14.4584 )
+rotation = -1.27456
 rest = Transform2D( -0.216906, -0.976192, 0.976192, -0.216906, -24.5143, -14.4584 )
 
 [node name="Front paw R" type="Bone2D" parent="Skeleton2D/hip/chest/Arm R/Front leg R"]
 position = Vector2( 20.1413, -21.5921 )
-rotation = -0.361421
-scale = Vector2( 1, 1 )
+rotation = -0.390003
 rest = Transform2D( 0.806777, -0.590857, 0.590857, 0.806777, 22.1587, -19.5446 )
 default_length = 5.0
 
 [node name="Leg L" type="Bone2D" parent="Skeleton2D/hip"]
 position = Vector2( 19, 7 )
-rotation = -0.582542
-scale = Vector2( 1, 1 )
+rotation = 0.389287
 rest = Transform2D( 0.997726, -0.0674036, 0.0674036, 0.997726, 19, 7 )
 
 [node name="thigh" type="Bone2D" parent="Skeleton2D/hip/Leg L"]
-position = Vector2( 3.04226, 28.2887 )
-rotation = 0.910163
-scale = Vector2( 1, 1 )
+position = Vector2( 5.63499, 24.1191 )
+rotation = -0.0535861
 rest = Transform2D( 0.999303, 0.0373298, -0.0373298, 0.999303, 5.75749, 33.4642 )
 
 [node name="paw" type="Bone2D" parent="Skeleton2D/hip/Leg L/thigh"]
 position = Vector2( -11.325, 31.4014 )
-rotation = 2.19475
-scale = Vector2( 1, 1 )
+rotation = 2.74114
 rest = Transform2D( -0.838637, 0.54469, -0.54469, -0.838637, -3.9321, 30.8956 )
 default_length = 5.0
 
 [node name="Leg R" type="Bone2D" parent="Skeleton2D/hip"]
 position = Vector2( -6, 5 )
-rotation = 0.112816
+rotation = 0.645595
 rest = Transform2D( 1, 0, 0, 1, -6, 5 )
 
 [node name="thigh" type="Bone2D" parent="Skeleton2D/hip/Leg R"]
-position = Vector2( 12.4412, 35.4046 )
-rotation = -0.116938
+position = Vector2( 13.8638, 33.8314 )
+rotation = -0.091301
 rest = Transform2D( 1, 0, 0, 1, 12, 34 )
 
 [node name="paw" type="Bone2D" parent="Skeleton2D/hip/Leg R/thigh"]
 position = Vector2( -7.37434, 25.3499 )
-rotation = 2.07658
-scale = Vector2( 1, 1 )
+rotation = 1.81724
 rest = Transform2D( -0.575411, 0.817864, -0.817864, -0.575411, -3, 21 )
 default_length = 5.0
 
 [node name="Tail" type="Bone2D" parent="Skeleton2D/hip"]
-position = Vector2( 24.7939, -22.2321 )
-rotation = -0.646543
-scale = Vector2( 1, 1 )
+position = Vector2( 15.8969, -28.3155 )
+rotation = -0.872333
 rest = Transform2D( 0.472076, -0.881558, 0.881558, 0.472076, 21, -32 )
 
 [node name="tail end" type="Bone2D" parent="Skeleton2D/hip/Tail"]
 position = Vector2( 23.182, -13.8778 )
-rotation = -1.37212
-scale = Vector2( 1, 1 )
+rotation = -0.677434
 rest = Transform2D( 0.984479, -0.175504, 0.175504, 0.984479, 31.5144, -8.93553 )
