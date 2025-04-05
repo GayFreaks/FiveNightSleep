@@ -5,6 +5,7 @@ export var health = 100
 export var speed = 100
 export var given_damage = 20
 
+onready var sound_manager = get_node("/root/SoundManeger")
 onready var enemy_director = get_node("/root/EnemyDirector")
 onready var health_bar = $Control/HealthBar
 onready var animation = $Cat/AnimationPlayer
@@ -54,4 +55,5 @@ func _physics_process(_delta):
 
 func _on_AttackDetect_body_entered(body:Node):
 	if body.is_in_group("Player"):
+		sound_manager.player.play()
 		body.damage(given_damage)
