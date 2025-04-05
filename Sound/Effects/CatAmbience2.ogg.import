@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/CatAmbience2.ogg-a663eefe7a9e3947723b2bd30a5342cc.oggstr"
+
+[deps]
+
+source_file="res://Sound/Effects/CatAmbience2.ogg"
+dest_files=[ "res://.import/CatAmbience2.ogg-a663eefe7a9e3947723b2bd30a5342cc.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
