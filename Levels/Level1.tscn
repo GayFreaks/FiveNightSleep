@@ -21,4 +21,5 @@ position = Vector2( -24, 640 )
 
 [node name="Door" parent="ElementContainer" instance=ExtResource( 4 )]
 position = Vector2( 6, -652 )
+locked = false
 level_name = "Level2"
