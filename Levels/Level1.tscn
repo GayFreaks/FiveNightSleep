@@ -9,10 +9,16 @@
 [node name="Level1" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( -44, -1425, -134, -844, -136, -489, -359, -467, -808, -410, -1046, -217, -1108, 518, -899, 664, -702, 820, -122, 831, 309, 810, 892, 796, 1151, 291, 1052, -147, 1006, -244, 636, -527, 149, -484, 143, -956, 248, -1403, 2187, 236, 929, 1426, -1821, 1162, -1301, -901 )
+
 [node name="ElementContainer" type="YSort" parent="."]
 
 [node name="Player" parent="ElementContainer" instance=ExtResource( 2 )]
+position = Vector2( -24, 640 )
 
 [node name="Door" parent="ElementContainer" instance=ExtResource( 4 )]
-position = Vector2( 1014, 92 )
+position = Vector2( 6, -652 )
 level_name = "Level2"

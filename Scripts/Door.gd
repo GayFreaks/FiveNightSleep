@@ -6,4 +6,5 @@ export var level_name = "LevelX"
 
 func _on_Door_body_entered(body:Node):
 	if body.is_in_group("Player"):
+		print("res://Levels/" + level_name + ".tscn")
 		loader.goto_scene_path("res://Levels/" + level_name + ".tscn")

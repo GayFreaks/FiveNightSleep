@@ -1,52 +1,32 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=1]
-[ext_resource path="res://MainMenu/Main_Screen.png" type="Texture" id=2]
-[ext_resource path="res://MainMenu/Meleetonin.png" type="Texture" id=3]
-[ext_resource path="res://MainMenu/Start.png" type="Texture" id=4]
+[ext_resource path="res://Assets/UI/Main_Screen.png" type="Texture" id=2]
+[ext_resource path="res://Assets/UI/StartButton.png" type="Texture" id=3]
 
 [node name="Main" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 232.0
-margin_top = 184.0
-margin_right = 232.0
-margin_bottom = 184.0
 script = ExtResource( 1 )
 
-[node name="CenterContainer" type="VBoxContainer" parent="."]
-anchor_left = -0.112
-anchor_top = -0.141
-anchor_right = 0.592
-anchor_bottom = 0.807
-margin_left = 31.04
-margin_top = 32.28
-margin_right = 1389.36
-margin_bottom = -789.56
-rect_scale = Vector2( 0.5, 5.1 )
-
-[node name="MainScreen" type="Sprite" parent="CenterContainer"]
-position = Vector2( 1312, 98.8235 )
-scale = Vector2( 1.38799, 0.103401 )
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
 texture = ExtResource( 2 )
 
-[node name="Start" type="Sprite" parent="CenterContainer/MainScreen"]
-position = Vector2( 0, 512 )
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 4 )
+[node name="TextureButton" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -345.0
+margin_top = -301.0
+margin_right = 333.0
+margin_bottom = -20.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 3 )
+texture_disabled = ExtResource( 3 )
+expand = true
 
-[node name="Button" type="Button" parent="CenterContainer/MainScreen/Start"]
-anchor_left = 0.16
-anchor_top = 0.505
-anchor_right = 0.851
-anchor_bottom = 0.828
-margin_left = -1365.12
-margin_top = -1034.24
-margin_right = -1364.93
-margin_bottom = -1023.74
-flat = true
-
-[node name="Meleetonin" type="Sprite" parent="CenterContainer/MainScreen"]
-position = Vector2( -32, -496 )
-scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 3 )
+[connection signal="pressed" from="TextureButton" to="." method="_on_PlayButton_pressed"]

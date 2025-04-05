@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/StartButton.png-628f14d337b64c877ab1dccbec3b97a8.stex"
+path="res://.import/UnLock.png-ad8e9346b5904d69ac5220ec1a2ebdea.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://MainMenu/StartButton.png"
-dest_files=[ "res://.import/StartButton.png-628f14d337b64c877ab1dccbec3b97a8.stex" ]
+source_file="res://Assets/Levels/UnLock.png"
+dest_files=[ "res://.import/UnLock.png-ad8e9346b5904d69ac5220ec1a2ebdea.stex" ]
 
 [params]
 

@@ -23,6 +23,7 @@ func goto_scene_path(path): # Game requests to switch to this scene.
 
 func goto_scene(path): # Game requests to switch to this scene.
 	get_tree().change_scene_to(path)
+	set_process(false)
 
 func _process(_time):
 	if loader == null:
