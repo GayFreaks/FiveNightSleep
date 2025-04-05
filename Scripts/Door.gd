@@ -18,11 +18,11 @@ func change_lock(new_status):
 	if locked:
 		if lock_icon != null:
 			lock_sprite.texture = lock_icon
-		lock_collision.disabled = false
+		lock_collision.set_deferred("disabled", false)
 	else:
 		if unlock_icon != null:
 			lock_sprite.texture = unlock_icon
-		lock_collision.disabled = true
+		lock_collision.set_deferred("disabled", true)
 
 func _on_Door_body_entered(body:Node):
 	if body.is_in_group("Player"):
