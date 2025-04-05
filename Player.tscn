@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Items/HardPillow.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Player.png" type="Texture" id=3]
+[ext_resource path="res://Rigs/main guy.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Items/Pillow.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Items/Bed.png" type="Texture" id=5]
 [ext_resource path="res://Scripts/melee_weapon.gd" type="Script" id=6]
@@ -184,9 +184,7 @@ script = ExtResource( 1 )
 position = Vector2( 0, -20 )
 shape = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.1, 0.1 )
-texture = ExtResource( 3 )
+[node name="Sprite" parent="." instance=ExtResource( 3 )]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
