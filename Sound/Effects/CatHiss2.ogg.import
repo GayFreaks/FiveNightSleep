@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/CatHiss2.ogg-872f0880c8149082d6377889b4ca0698.oggstr"
+
+[deps]
+
+source_file="res://Sound/Effects/CatHiss2.ogg"
+dest_files=[ "res://.import/CatHiss2.ogg-872f0880c8149082d6377889b4ca0698.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
