@@ -13,6 +13,8 @@ onready var cooldown_display = $CanvasLayer/UI/Cooldown
 onready var cooldown = $ShootCooldown
 onready var death_screen = $CanvasLayer/DeathScreen
 onready var animation = $Sprite/AnimationPlayer
+# onready var left_arm = $"Sprite/Skeleton2D/Hip/Chest/Arm L"
+# onready var right_arm = $"Sprite/Skeleton2D/Hip/Chest/Arm R"
 
 var weapon_index = 0
 var current_weapon = null
@@ -66,6 +68,8 @@ func _unhandled_input(event):
 		mouse_rot_rel_player = mouse_on_screen.angle_to_point(player_on_screen)
 		direction_object.position = mouse_pos_rel_player
 		direction_object.rotation = mouse_rot_rel_player
+		# left_arm.rotation = mouse_rot_rel_player
+		# right_arm.rotation = mouse_rot_rel_player
 
 		if mouse_pos_rel_player.x < 0:
 			if current_weapon != null:
