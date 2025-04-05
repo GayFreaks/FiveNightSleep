@@ -17,7 +17,4 @@ margin_right = 1920.0
 margin_bottom = 20.0
 text = "Start"
 
-[node name="Button2" type="Button" parent="CenterContainer"]
-margin_top = 24.0
-margin_right = 1920.0
-margin_bottom = 44.0
+[connection signal="pressed" from="CenterContainer/Button" to="." method="_on_Button_pressed"]
