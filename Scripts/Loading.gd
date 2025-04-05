@@ -24,7 +24,6 @@ func goto_scene(path): # Game requests to switch to this scene.
 func _process(_time):
 	if loader == null:
 		# no need to process anymore
-		visible = false
 		set_process(false)
 		return
 
@@ -37,6 +36,7 @@ func _process(_time):
 		if err == ERR_FILE_EOF: # Finished loading.
 			var resource = loader.get_resource()
 			loader = null
+			visible = false
 			set_new_scene(resource)
 			break
 		elif err == OK:
