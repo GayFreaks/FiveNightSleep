@@ -7,6 +7,7 @@ export var given_damage = 50
 
 onready var enemy_director = get_node("/root/EnemyDirector")
 onready var health_bar = $Control/HealthBar
+onready var animation = $Cat/AnimationPlayer
 
 var rng = RandomNumberGenerator.new()
 
@@ -41,6 +42,15 @@ func damage(amount, knockback):
 
 func _physics_process(_delta):
 	apply_central_impulse((target_location - position).normalized() * speed)
+
+	animation.play("CatWalk")
+
+	if round(linear_velocity.x) > 0:
+		$Cat.scale.x = -1
+		$CollisionShape2D.scale.x = -1
+	elif round(linear_velocity.x) < 0:
+		$Cat.scale.x = 1
+		$CollisionShape2D.scale.x = 1
 
 func _on_AttackDetect_body_entered(body:Node):
 	if body.is_in_group("Player"):

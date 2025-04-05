@@ -11,8 +11,6 @@ height = 111.723
 radius = 150.0
 
 [node name="Cat" type="RigidBody2D" groups=["Enemy"]]
-position = Vector2( 8.56945, 7.38678 )
-rotation = 0.135977
 collision_layer = 4
 collision_mask = 7
 mode = 2
