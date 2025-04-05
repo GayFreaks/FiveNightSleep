@@ -22,16 +22,9 @@ var muzik = [
 	preload("res://Sound/Music/Combat3.ogg"),
 ]
 
-var cat_noises = [
-	preload("res://Sound/Effects/CatAmbience2.ogg"),
-	preload("res://Sound/Effects/CatAmbience3.ogg"),
-	preload("res://Sound/Effects/CatAmbience4.ogg"),
-	preload("res://Sound/Effects/CatAmbience.ogg"),
-	preload("res://Sound/Effects/CatHiss2.ogg"),
-	preload("res://Sound/Effects/CatHiss.ogg"),
-	preload("res://Sound/Effects/CatYell2.ogg"),
-	preload("res://Sound/Effects/CatYell.ogg"),
-]
+
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
