@@ -1,15 +1,17 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Items/HardPillow.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Player.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Items/Pillow.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Items/Bed.png" type="Texture" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 80.0
 height = 120.0
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 45.5, 62.4352 )
+extents = Vector2( 85.2425, 104.89 )
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -28,6 +30,8 @@ current = true
 [node name="Direction" type="Node2D" parent="."]
 
 [node name="Pillow" type="Area2D" parent="Direction"]
+visible = false
+monitorable = false
 
 [node name="Sprite" type="Sprite" parent="Direction/Pillow"]
 position = Vector2( 75, -35 )
@@ -38,3 +42,29 @@ texture = ExtResource( 4 )
 position = Vector2( 75.951, -35.3792 )
 rotation = 0.523598
 shape = SubResource( 2 )
+
+[node name="HardPillow" type="Area2D" parent="Direction"]
+visible = false
+monitorable = false
+
+[node name="Sprite" type="Sprite" parent="Direction/HardPillow"]
+position = Vector2( 75, -35 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Direction/HardPillow"]
+position = Vector2( 75.951, -35.3792 )
+rotation = 0.523598
+shape = SubResource( 2 )
+
+[node name="Bed" type="Area2D" parent="Direction"]
+visible = false
+monitorable = false
+
+[node name="Sprite" type="Sprite" parent="Direction/Bed"]
+position = Vector2( 75, -35 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 5 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Direction/Bed"]
+polygon = PoolVector2Array( -55, 34, 73, 82, 206, -71, 209, -108, 91, -152, -56, -16 )
