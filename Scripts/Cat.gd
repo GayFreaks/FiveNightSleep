@@ -3,7 +3,7 @@ class_name Cat
 
 export var health = 100
 export var speed = 100
-export var given_damage = 50
+export var given_damage = 20
 
 onready var enemy_director = get_node("/root/EnemyDirector")
 onready var health_bar = $Control/HealthBar
@@ -54,4 +54,4 @@ func _physics_process(_delta):
 
 func _on_AttackDetect_body_entered(body:Node):
 	if body.is_in_group("Player"):
-		body.damage(50)
+		body.damage(given_damage)

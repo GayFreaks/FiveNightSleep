@@ -26,16 +26,6 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="ElementContainer" type="YSort" parent="."]
-
-[node name="Player" parent="ElementContainer" instance=ExtResource( 2 )]
-position = Vector2( -24, 640 )
-
-[node name="Door" parent="ElementContainer" instance=ExtResource( 4 )]
-position = Vector2( 6, -652 )
-locked = false
-level_name = "Level2"
-
 [node name="meelee" type="Sprite" parent="."]
 position = Vector2( -299, 1.99999 )
 scale = Vector2( 0.441667, 0.481018 )
@@ -55,3 +45,13 @@ texture = ExtResource( 6 )
 position = Vector2( 629, -4.99998 )
 scale = Vector2( 0.564815, 0.564815 )
 texture = ExtResource( 3 )
+
+[node name="ElementContainer" type="YSort" parent="."]
+
+[node name="Player" parent="ElementContainer" instance=ExtResource( 2 )]
+position = Vector2( -24, 640 )
+
+[node name="Door" parent="ElementContainer" instance=ExtResource( 4 )]
+position = Vector2( 6, -652 )
+locked = false
+level_name = "Level2"
