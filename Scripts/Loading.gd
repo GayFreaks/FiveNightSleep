@@ -10,7 +10,7 @@ func _ready():
 	var root = get_tree().get_root()
 	current_scene = root.get_child(root.get_child_count() -1)
 
-func goto_scene(path): # Game requests to switch to this scene.
+func goto_scene_path(path): # Game requests to switch to this scene.
 	loader = ResourceLoader.load_interactive(path)
 	if loader == null: # Check for errors.
 		print("No loader?")
@@ -20,6 +20,9 @@ func goto_scene(path): # Game requests to switch to this scene.
 	current_scene.queue_free() # Get rid of the old scene.
 
 	wait_frames = 1
+
+func goto_scene(path): # Game requests to switch to this scene.
+	get_tree().change_scene_to(path)
 
 func _process(_time):
 	if loader == null:
