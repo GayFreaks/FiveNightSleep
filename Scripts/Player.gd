@@ -72,3 +72,6 @@ func _physics_process(_delta):
 	velocity = Vector2.ZERO
 	velocity = get_input().normalized() * speed
 	velocity = move_and_slide(velocity)
+
+func damage(amount):
+	print(amount)
