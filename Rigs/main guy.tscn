@@ -1115,6 +1115,7 @@ anims/JimmyDash = SubResource( 3 )
 anims/JimmyDashContinue = SubResource( 4 )
 anims/JimmyWalk = SubResource( 1 )
 anims/RESET = SubResource( 2 )
+blend_times = [ "JimmyWalk", "JimmyDash", 1.0, "JimmyWalk", "RESET", 1.0 ]
 
 [node name="GuyRef" type="Sprite" parent="."]
 visible = false
@@ -1206,7 +1207,6 @@ scale = Vector2( 0.1, 0.1 )
 [node name="Hip" type="Bone2D" parent="Skeleton2D"]
 position = Vector2( 30, 390 )
 rotation = -1.53859
-scale = Vector2( 1, 1 )
 rest = Transform2D( 0.0322009, -0.999481, 0.999481, 0.0322009, 30, 390 )
 default_length = 60.0
 
@@ -1217,7 +1217,6 @@ rest = Transform2D( 1, 0, 0, 1, 129.611, -14.1809 )
 [node name="Arm R2" type="Bone2D" parent="Skeleton2D/Hip/Chest"]
 position = Vector2( 362.08, -251.79 )
 rotation = 1.54605
-scale = Vector2( 1, 1 )
 rest = Transform2D( 0.024746, 0.999694, -0.999694, 0.024746, 362.08, -251.79 )
 
 [node name="ForeArm" type="Bone2D" parent="Skeleton2D/Hip/Chest/Arm R2"]
@@ -1231,7 +1230,6 @@ rest = Transform2D( 1, 0, 0, 1, -78.2079, 240.59 )
 [node name="Arm R" type="Bone2D" parent="Skeleton2D/Hip/Chest"]
 position = Vector2( 400.632, 160.916 )
 rotation = 1.54605
-scale = Vector2( 1, 1 )
 rest = Transform2D( 0.024746, 0.999694, -0.999694, 0.024746, 366.345, 251.757 )
 
 [node name="ForeArm" type="Bone2D" parent="Skeleton2D/Hip/Chest/Arm R"]

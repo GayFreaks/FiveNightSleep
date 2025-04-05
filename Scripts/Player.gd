@@ -89,11 +89,13 @@ func _physics_process(_delta):
 		velocity = get_input().normalized() * speed
 	velocity = move_and_slide(velocity)
 
-	if not dashing:
+	if dashing:
+		animation.play("JimmyDash")
+	else:
 		if round(velocity.length()) != 0:
 			animation.play("JimmyWalk")
-	else:
-		animation.play("JimmyDash")
+		else:
+			animation.play("RESET")
 
 	cooldown_display.value = cooldown.time_left/cooldown.wait_time
 
