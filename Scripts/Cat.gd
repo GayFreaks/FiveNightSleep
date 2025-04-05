@@ -3,20 +3,29 @@ class_name Cat
 
 export var health = 100
 
-onready var enemy_directory = get_node("/root/EnemyDirector")
+onready var enemy_director = get_node("/root/EnemyDirector")
 onready var health_bar = $Control/HealthBar
 
 enum states {
 	IDLE,
-	PURSUE,
-	ATTACK,
-	FLEE
+	CHARGE,
+	STALK,
+	JUMP
 }
 
-var state = states.IDLE
+var state = states.IDLE setget state_change
+var goal = states.IDLE
+var target_location = Vector2.ZERO
+
+func state_change(new_state):
+	if goal == states.IDLE:
+		if new_state == states.CHARGE:
+			target_location = enemy_director.current_player.position - self.position
+	
+	state = new_state
 
 func _ready():
-	enemy_directory.current_enemies.append(self)
+	enemy_director.current_enemies.append(self)
 
 	health_bar.max_value = health
 	health_bar.value = health
@@ -31,11 +40,14 @@ func damage(amount, knockback):
 	health_bar.value = health
 	health_bar.show()
 	if health <= 0:
-		enemy_directory.enemy_died(self)
+		enemy_director.enemy_died(self)
 		queue_free()
 
 	apply_central_impulse(knockback)
 
-func _on_Detection_body_entered(body:Node):
-	if body.is_in_group("Player"):
-		state = states.PURSUE
+func _physics_process(_delta):
+	apply_central_impulse(target_location.normalized() * 10)
+
+	# if goal == states.CHARGE:
+	# 	if navigation.is_navigation_finished():
+	# 		goal = states.IDLE
