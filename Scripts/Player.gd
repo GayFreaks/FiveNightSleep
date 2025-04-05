@@ -16,6 +16,7 @@ onready var animation = $Sprite/AnimationPlayer
 
 var weapon_index = 0
 var current_weapon = null
+var dashing = false
 
 var speed = 500  # speed in pixels/sec
 var velocity = Vector2.ZERO
@@ -77,14 +78,22 @@ func _unhandled_input(event):
 			if event.button_index == 1 && event.pressed:
 				if current_weapon != null:
 					current_weapon.thrust()
+	
+	if event.is_action_pressed("Dash") && not dashing:
+		dashing = true
+		
 
 func _physics_process(_delta):
 	velocity = Vector2.ZERO
-	velocity = get_input().normalized() * speed
+	if not dashing:
+		velocity = get_input().normalized() * speed
 	velocity = move_and_slide(velocity)
 
-	if round(velocity.length()) != 0:
-		animation.play("JimmyWalk")
+	if not dashing:
+		if round(velocity.length()) != 0:
+			animation.play("JimmyWalk")
+	else:
+		animation.play("JimmyDash")
 
 	cooldown_display.value = cooldown.time_left/cooldown.wait_time
 
@@ -97,4 +106,5 @@ func damage(amount):
 	health_bar.value = state.player_health
 
 func _on_DeathButton_pressed():
+	state.player_health = 100
 	loader.goto_scene_path("res://Main.tscn")
