@@ -11,6 +11,10 @@ height = 111.723
 radius = 150.0
 
 [node name="Cat" type="RigidBody2D" groups=["Enemy"]]
+position = Vector2( 8.56945, 7.38678 )
+rotation = 0.135977
+collision_layer = 4
+collision_mask = 7
 mode = 2
 linear_damp = 10.0
 angular_damp = 10.0
@@ -22,7 +26,6 @@ rotation = 0.785397
 shape = SubResource( 1 )
 
 [node name="Cat" parent="." instance=ExtResource( 1 )]
-position = Vector2( 50, -25 )
 scale = Vector2( 2, 2 )
 
 [node name="Control" type="Control" parent="."]

@@ -6,6 +6,7 @@
 [ext_resource path="res://Nodes/Door.tscn" type="PackedScene" id=4]
 
 [node name="Level2" type="Node2D"]
+position = Vector2( 25, -38 )
 
 [node name="Level2" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -16,15 +17,14 @@ texture = ExtResource( 1 )
 polygon = PoolVector2Array( -183, -1729, -278, -666, -803, -712, -976, -646, -1077, -449, -1228, -137, -1204, 758, -1155, 872, -1041, 920, -346, 965, 92, 937, 231, 943, 355, 898, 517, 766, 672, 565, 843, 464, 1071, 432, 1096, 299, 1066, 207, 1093, -50, 944, -289, 602, -484, 407, -691, 309, -698, -1, -679, -30, -1252, 1612, -620, 1302, 1089, -2029, 1499, -1742, -1302 )
 
 [node name="ElementContainer" type="YSort" parent="."]
+position = Vector2( -30.1675, 28.0588 )
+rotation = 0.073984
 
 [node name="Cat" parent="ElementContainer" instance=ExtResource( 3 )]
-position = Vector2( 633, 126 )
 
 [node name="Cat2" parent="ElementContainer" instance=ExtResource( 3 )]
-position = Vector2( 206, -292 )
 
 [node name="Cat3" parent="ElementContainer" instance=ExtResource( 3 )]
-position = Vector2( -687, -305 )
 
 [node name="Door" parent="ElementContainer" instance=ExtResource( 4 )]
 position = Vector2( -143, -837 )
