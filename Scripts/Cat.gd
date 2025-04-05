@@ -5,6 +5,17 @@ export var health = 100
 export var speed = 100
 export var given_damage = 20
 
+var cat_noises = [
+	preload("res://Sound/Effects/CatAmbience2.ogg"),
+	preload("res://Sound/Effects/CatAmbience3.ogg"),
+	preload("res://Sound/Effects/CatAmbience4.ogg"),
+	preload("res://Sound/Effects/CatAmbience.ogg"),
+	preload("res://Sound/Effects/CatHiss2.ogg"),
+	preload("res://Sound/Effects/CatHiss.ogg"),
+	preload("res://Sound/Effects/CatYell2.ogg"),
+	preload("res://Sound/Effects/CatYell.ogg"),
+]
+
 onready var sound_manager = get_node("/root/SoundManeger")
 onready var enemy_director = get_node("/root/EnemyDirector")
 onready var health_bar = $Control/HealthBar
@@ -35,6 +46,10 @@ func damage(amount, knockback):
 	health -= amount
 	health_bar.value = health
 	health_bar.show()
+	rng.randomize()
+	if $AudioStreamPlayer2d.playing == false:
+		var random_index = rng.randi_range(0, 7)
+		$AudioStreamPlayer.play(sound_manager.cat_noises[random_index])
 	if health <= 0:
 		enemy_director.enemy_died(self)
 		queue_free()
