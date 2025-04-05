@@ -29,7 +29,6 @@ func change_weapon(new_weapon):
 	weapon_index = new_weapon
 
 	if current_weapon != null:
-		current_weapon.monitoring = false
 		current_weapon.hide()
 
 	match new_weapon:
@@ -43,7 +42,6 @@ func change_weapon(new_weapon):
 			print("new_weapon invalid 2")
 			return
 
-	current_weapon.monitoring = true
 	current_weapon.show()
 
 func _unhandled_input(event):
@@ -65,7 +63,8 @@ func _unhandled_input(event):
 
 		if event is InputEventMouseButton:
 			if event.button_index == 1 && event.pressed:
-				pass
+				if current_weapon != null:
+					current_weapon.thrust()
 
 func _physics_process(_delta):
 	velocity = Vector2.ZERO
