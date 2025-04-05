@@ -20,7 +20,7 @@ polygon = PoolVector2Array( -183, -1729, -176, -640, -992, -720, -1152, -576, -1
 
 [node name="Door" parent="Level5/ElementContainer" instance=ExtResource( 2 )]
 position = Vector2( -16, -744 )
-level_name = "Level3"
+level_name = "Level6"
 
 [node name="Player" parent="Level5/ElementContainer" instance=ExtResource( 3 )]
 position = Vector2( -360, 448 )
