@@ -1,17 +1,18 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Items/HardPillow.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Player.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Items/Pillow.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Items/Bed.png" type="Texture" id=5]
+[ext_resource path="res://Scripts/melee_weapon.gd" type="Script" id=6]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 80.0
 height = 120.0
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 85.2425, 104.89 )
+extents = Vector2( 38.6003, 60.8144 )
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -31,7 +32,10 @@ current = true
 
 [node name="Pillow" type="Area2D" parent="Direction"]
 visible = false
+monitoring = false
 monitorable = false
+script = ExtResource( 6 )
+knockback = 3000
 
 [node name="Sprite" type="Sprite" parent="Direction/Pillow"]
 position = Vector2( 75, -35 )
@@ -45,26 +49,37 @@ shape = SubResource( 2 )
 
 [node name="HardPillow" type="Area2D" parent="Direction"]
 visible = false
+monitoring = false
 monitorable = false
+script = ExtResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="Direction/HardPillow"]
-position = Vector2( 75, -35 )
+position = Vector2( 75, -45 )
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 2 )
+flip_h = true
+flip_v = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Direction/HardPillow"]
-position = Vector2( 75.951, -35.3792 )
+position = Vector2( 71.5729, -42.7673 )
 rotation = 0.523598
 shape = SubResource( 2 )
 
 [node name="Bed" type="Area2D" parent="Direction"]
 visible = false
+monitoring = false
 monitorable = false
+script = ExtResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="Direction/Bed"]
-position = Vector2( 75, -35 )
+position = Vector2( 107, -94 )
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 5 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Direction/Bed"]
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Direction/Bed"]
+position = Vector2( 33, -60 )
 polygon = PoolVector2Array( -55, 34, 73, 82, 206, -71, 209, -108, 91, -152, -56, -16 )
+
+[connection signal="body_entered" from="Direction/Pillow" to="Direction/Pillow" method="_on_body_entered"]
+[connection signal="body_entered" from="Direction/HardPillow" to="Direction/HardPillow" method="_on_body_entered"]
+[connection signal="body_entered" from="Direction/Bed" to="Direction/Bed" method="_on_body_entered"]

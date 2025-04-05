@@ -9,18 +9,30 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "RigidBody2D",
+"class": "Cat",
+"language": "GDScript",
+"path": "res://Scripts/Cat.gd"
+}, {
+"base": "Area2D",
+"class": "MeleeWeaponn",
+"language": "GDScript",
+"path": "res://Scripts/melee_weapon.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
 "path": "res://Scripts/Player.gd"
 } ]
 _global_script_class_icons={
+"Cat": "",
+"MeleeWeaponn": "",
 "Player": ""
 }
 
 [application]
 
-config/name="FiveNightsToSleep"
+config/name="Meleetonin"
 run/main_scene="res://Levels/Overworld.tscn"
 config/icon="res://icon.png"
 
@@ -52,3 +64,8 @@ Move_Right={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
+
+[physics]
+
+2d/default_gravity=0
+2d/default_gravity_vector=Vector2( 0, 0 )

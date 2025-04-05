@@ -5,6 +5,7 @@ onready var direction_object = $Direction
 onready var pillow = $Direction/Pillow
 onready var hard_pillow = $Direction/HardPillow
 onready var bed = $Direction/Bed
+var weapon_index = 0
 var current_weapon = null
 
 var speed = 500  # speed in pixels/sec
@@ -12,10 +13,38 @@ var velocity = Vector2.ZERO
 var mouse_pos_rel_player
 var mouse_rot_rel_player
 
+func _ready():
+	change_weapon(weapon_index)
+
 func get_input():
 	var movement_direction = Vector2(Input.get_axis("Move_Left", "Move_Right"), Input.get_axis("Move_Up", "Move_Down"))
 
 	return movement_direction
+
+func change_weapon(new_weapon):
+	if typeof(new_weapon) != TYPE_INT:
+		print("new_weapon invalid 1")
+		return
+
+	weapon_index = new_weapon
+
+	if current_weapon != null:
+		current_weapon.monitoring = false
+		current_weapon.hide()
+
+	match new_weapon:
+		0:
+			current_weapon = pillow
+		1:
+			current_weapon = hard_pillow
+		2:
+			current_weapon = bed
+		_:
+			print("new_weapon invalid 2")
+			return
+
+	current_weapon.monitoring = true
+	current_weapon.show()
 
 func _unhandled_input(event):
 	if event is InputEventMouse:
@@ -36,7 +65,7 @@ func _unhandled_input(event):
 
 		if event is InputEventMouseButton:
 			if event.button_index == 1 && event.pressed:
-				print("uwu")
+				pass
 
 func _physics_process(_delta):
 	velocity = Vector2.ZERO
