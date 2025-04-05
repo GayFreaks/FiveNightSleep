@@ -38,6 +38,8 @@ func _ready():
 	health_bar.value = health
 	health_bar.hide()
 
+	animation.connect("animation_finished", self, "anim_done")
+
 func _integrate_forces(_state):
 	angular_velocity = 0
 	rotation_degrees = 0
@@ -46,6 +48,9 @@ func damage(amount, knockback):
 	health -= amount
 	health_bar.value = health
 	health_bar.show()
+
+	animation.play("CastPushed")
+
 	rng.randomize()
 	if $AudioStreamPlayer2D.playing == false:
 		var random_index = rng.randi_range(0, 7)
@@ -60,16 +65,22 @@ func damage(amount, knockback):
 func _physics_process(_delta):
 	apply_central_impulse((target_location - position).normalized() * speed)
 
-	animation.play("CatWalk")
+	if animation.current_animation != "CastPushed":
+		animation.play("CatWalk")
+	
+		if round(linear_velocity.x) > 0:
+			$Cat.scale.x = -1.5
+			$CollisionShape2D.scale.x = -1
+		elif round(linear_velocity.x) < 0:
+			$Cat.scale.x = 1.5
+			$CollisionShape2D.scale.x = 1
 
-	if round(linear_velocity.x) > 0:
-		$Cat.scale.x = -1.5
-		$CollisionShape2D.scale.x = -1
-	elif round(linear_velocity.x) < 0:
-		$Cat.scale.x = 1.5
-		$CollisionShape2D.scale.x = 1
+func anim_done(anim_name):
+	if anim_name == "CastPushed":
+		animation.current_animation = ""
 
 func _on_AttackDetect_body_entered(body:Node):
 	if body.is_in_group("Player"):
 		sound_manager.player.play()
+		animation.play("CastPushed")
 		body.damage(given_damage)
