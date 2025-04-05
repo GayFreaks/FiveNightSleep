@@ -1,8 +1,8 @@
 extends KinematicBody2D
 class_name Player
 
-export var health = 100
-
+onready var loader = get_node("/root/Loading")
+onready var state = get_node("/root/GameState")
 onready var enemy_director = get_node("/root/EnemyDirector")
 onready var direction_object = $Direction
 onready var pillow = $Direction/Pillow
@@ -11,9 +11,12 @@ onready var bed = $Direction/Bed
 onready var health_bar = $CanvasLayer/UI/HealthBar
 onready var cooldown_display = $CanvasLayer/UI/Cooldown
 onready var cooldown = $ShootCooldown
+onready var death_screen = $CanvasLayer/DeathScreen
+onready var animation = $Sprite/AnimationPlayer
 
 var weapon_index = 0
 var current_weapon = null
+var dashing = false
 
 var speed = 500  # speed in pixels/sec
 var velocity = Vector2.ZERO
@@ -23,7 +26,8 @@ var mouse_rot_rel_player
 func _ready():
 	enemy_director.current_player = self
 	change_weapon(weapon_index)
-	health_bar.value = health
+	health_bar.value = state.player_health
+	death_screen.hide()
 
 func get_input():
 	var movement_direction = Vector2(Input.get_axis("Move_Left", "Move_Right"), Input.get_axis("Move_Up", "Move_Down"))
@@ -74,15 +78,35 @@ func _unhandled_input(event):
 			if event.button_index == 1 && event.pressed:
 				if current_weapon != null:
 					current_weapon.thrust()
+	
+	if event.is_action_pressed("Dash") && not dashing:
+		dashing = true
+		
 
 func _physics_process(_delta):
 	velocity = Vector2.ZERO
-	velocity = get_input().normalized() * speed
+	if not dashing:
+		velocity = get_input().normalized() * speed
 	velocity = move_and_slide(velocity)
+
+	if dashing:
+		animation.play("JimmyDash")
+	else:
+		if round(velocity.length()) != 0:
+			animation.play("JimmyWalk")
+		else:
+			animation.play("RESET")
 
 	cooldown_display.value = cooldown.time_left/cooldown.wait_time
 
 func damage(amount):
-	health -= amount
+	state.player_health -= amount
 
-	health_bar.value = health
+	if state.player_health <= 0:
+		death_screen.show()
+
+	health_bar.value = state.player_health
+
+func _on_DeathButton_pressed():
+	state.player_health = 100
+	loader.goto_scene_path("res://Main.tscn")

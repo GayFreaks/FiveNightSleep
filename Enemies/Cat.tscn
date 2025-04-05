@@ -31,10 +31,12 @@ margin_left = -110.0
 margin_top = -150.0
 margin_right = 45.0
 margin_bottom = -5.0
+mouse_filter = 2
 
 [node name="HealthBar" type="ProgressBar" parent="Control"]
 anchor_right = 1.0
 margin_bottom = 14.0
+mouse_filter = 2
 
 [node name="AttackDetect" type="Area2D" parent="."]
 
