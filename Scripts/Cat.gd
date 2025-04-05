@@ -47,9 +47,10 @@ func damage(amount, knockback):
 	health_bar.value = health
 	health_bar.show()
 	rng.randomize()
-	if $AudioStreamPlayer2d.playing == false:
+	if $AudioStreamPlayer2D.playing == false:
 		var random_index = rng.randi_range(0, 7)
-		$AudioStreamPlayer.play(sound_manager.cat_noises[random_index])
+		$AudioStreamPlayer2D.stream = cat_noises[random_index]
+		$AudioStreamPlayer2D.play()
 	if health <= 0:
 		enemy_director.enemy_died(self)
 		queue_free()
