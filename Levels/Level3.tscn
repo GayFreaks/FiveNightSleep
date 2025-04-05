@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Enemies/Cat.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Nodes/Door.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Levels/Level3.png" type="Texture" id=4]
+
+[node name="Level3" type="Node2D"]
+
+[node name="Level3" type="Sprite" parent="."]
+position = Vector2( 664, 1040 )
+texture = ExtResource( 4 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Level3"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level3/StaticBody2D"]
+polygon = PoolVector2Array( -183, -1729, -280, -808, -816, -776, -1024, -760, -1104, -728, -1176, -88, -1152, 136, -1112, 312, -1192, 616, -1204, 758, -1155, 872, -1041, 920, -688, 928, -480, 904, -208, 904, 40, 720, 120, 456, 288, 312, 432, 336, 528, 536, 624, 696, 808, 800, 1024, 800, 1160, 624, 1168, 520, 1224, 384, 1200, -176, 1160, -264, 1048, -584, 984, -768, 736, -808, 520, -632, 368, -384, 168, -360, 104, -464, 120, -768, -16, -792, 224, -1208, 1612, -620, 1302, 1089, -2029, 1499, -1742, -1302 )
+
+[node name="ElementContainer" type="YSort" parent="."]
+
+[node name="Door" parent="ElementContainer" instance=ExtResource( 2 )]
+position = Vector2( 536, 96 )
+level_name = "Level3"
+
+[node name="Player" parent="ElementContainer" instance=ExtResource( 3 )]
+position = Vector2( 104, 1688 )
+
+[node name="Cat" parent="ElementContainer" instance=ExtResource( 1 )]
+position = Vector2( 1440, 480 )
+
+[node name="Cat2" parent="ElementContainer" instance=ExtResource( 1 )]
+position = Vector2( 1528, 1504 )
+
+[node name="Cat3" parent="ElementContainer" instance=ExtResource( 1 )]
+position = Vector2( -64, 544 )
+
+[node name="Cat4" parent="ElementContainer" instance=ExtResource( 1 )]
+position = Vector2( 680, 1008 )
