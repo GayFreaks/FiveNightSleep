@@ -1,6 +1,8 @@
 extends KinematicBody2D
 class_name Player
 
+export var health = 100
+
 onready var enemy_director = get_node("/root/EnemyDirector")
 onready var direction_object = $Direction
 onready var pillow = $Direction/Pillow

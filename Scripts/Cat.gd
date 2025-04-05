@@ -46,10 +46,10 @@ func _physics_process(_delta):
 	animation.play("CatWalk")
 
 	if round(linear_velocity.x) > 0:
-		$Cat.scale.x = -1
+		$Cat.scale.x = -1.5
 		$CollisionShape2D.scale.x = -1
 	elif round(linear_velocity.x) < 0:
-		$Cat.scale.x = 1
+		$Cat.scale.x = 1.5
 		$CollisionShape2D.scale.x = 1
 
 func _on_AttackDetect_body_entered(body:Node):
