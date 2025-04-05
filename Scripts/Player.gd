@@ -13,6 +13,7 @@ onready var health_bar = $CanvasLayer/UI/HealthBar
 onready var cooldown_display = $CanvasLayer/UI/Cooldown
 onready var cooldown = $ShootCooldown
 onready var death_screen = $CanvasLayer/DeathScreen
+onready var animation = $Sprite/AnimationPlayer
 
 var weapon_index = 0
 var current_weapon = null
@@ -82,6 +83,9 @@ func _physics_process(_delta):
 	velocity = Vector2.ZERO
 	velocity = get_input().normalized() * speed
 	velocity = move_and_slide(velocity)
+
+	if round(velocity.length()) != 0:
+		animation.play("JimmyWalk")
 
 	cooldown_display.value = cooldown.time_left/cooldown.wait_time
 
