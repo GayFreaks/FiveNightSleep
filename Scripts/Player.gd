@@ -19,7 +19,6 @@ onready var animation = $Sprite/AnimationPlayer
 # onready var right_arm = $"Sprite/Skeleton2D/Hip/Chest/Arm R"
 onready var bullet_cooldown = $ShootCooldown
 
-var weapon_index = 0
 var current_weapon = null
 var dashing = false
 
@@ -30,7 +29,7 @@ var mouse_rot_rel_player
 
 func _ready():
 	enemy_director.current_player = self
-	change_weapon(weapon_index)
+	change_weapon(state.player_weapon)
 	health_bar.value = state.player_health
 	$CanvasLayer/WinScreen.hide()
 	death_screen.hide()
@@ -45,7 +44,7 @@ func change_weapon(new_weapon):
 		print("new_weapon invalid 1")
 		return
 
-	weapon_index = new_weapon
+	state.player_weapon = new_weapon
 
 	if current_weapon != null:
 		current_weapon.hide()
