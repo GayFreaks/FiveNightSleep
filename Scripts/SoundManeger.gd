@@ -28,35 +28,31 @@ var muzik = [
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	loader.connect("scene_change", self, "change_music")
+	change_music()
 
-
-func _process(_delta):
+func change_music():
 	if is_instance_valid(loader.current_scene):
 		if loader.current_scene.name == "Main":
-			if not player.playing:
-				player.stream = muzik [0]
+			if player.stream != muzik[0]:
+				player.stop()
+				player.stream = muzik[0]
 				player.play()
-	elif enemy_director.current_enemies.size() > 3:
-		if not player.playing:
-			var random_index = rng.randi_range(2, 4)
-			player.stream = muzik [random_index]
-			player.play()
-		else:
+		elif enemy_director.current_enemies.size() > 3:
 			player.stop()
 			var random_index = rng.randi_range(2, 4)
-			player.stream = muzik [random_index]
+			player.stream = muzik[random_index]
 			player.play()
-	elif enemy_director.current_enemies.size() > 2:
-		if not player.playing:
+		elif enemy_director.current_enemies.size() > 2:
+			player.stop()
 			var random_index = rng.randi_range(5, 6)
-			player.stream = muzik [random_index]
+			player.stream = muzik[random_index]
 			player.play()
-	elif enemy_director.current_enemies.size() < 0:
-		if not player.playing:
-			player.stream = muzik [7]
+		elif enemy_director.current_enemies.size() > 0:
+			player.stop()
+			player.stream = muzik[7]
 			player.play()
-	elif enemy_director.current_enemies.size() == 0:
-		if not player.playing:
-			player.stream = muzik [1]
+		elif enemy_director.current_enemies.size() == 0:
+			player.stop()
+			player.stream = muzik[1]
 			player.play()

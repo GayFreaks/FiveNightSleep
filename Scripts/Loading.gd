@@ -5,6 +5,8 @@ var wait_frames
 var time_max = 100 # msec
 var current_scene
 
+signal scene_change
+
 func _ready():
 	visible = false
 	var root = get_tree().get_root()
@@ -42,6 +44,7 @@ func _process(_time):
 			loader = null
 			visible = false
 			set_new_scene(resource)
+			emit_signal("scene_change")
 			break
 		elif err == OK:
 			update_progress()
