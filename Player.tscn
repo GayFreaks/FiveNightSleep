@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Items/HardPillow.png" type="Texture" id=2]
@@ -11,6 +11,10 @@
 [ext_resource path="res://Nodes/Bullet.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Assets/UI/WinScreen.png" type="Texture" id=10]
 [ext_resource path="res://Assets/UI/WinButton.png" type="Texture" id=11]
+[ext_resource path="res://Assets/UI/HealthBarBG.png" type="Texture" id=12]
+[ext_resource path="res://Assets/UI/HealthBarFG.png" type="Texture" id=14]
+[ext_resource path="res://Assets/UI/ThrowStaminaFG.png" type="Texture" id=15]
+[ext_resource path="res://Assets/UI/ThrowStaminaBG.png" type="Texture" id=16]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 50.0
@@ -322,43 +326,30 @@ anims/Attack = SubResource( 7 )
 anims/RESET = SubResource( 8 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="UI" type="Control" parent="CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/UI"]
-margin_left = 5.0
-margin_top = 5.0
-margin_right = 51.0
-margin_bottom = 19.0
-rect_scale = Vector2( 4, 4 )
-text = "Health:"
+[node name="HealthBar" type="TextureProgress" parent="CanvasLayer/UI"]
+margin_right = 40.0
+margin_bottom = 40.0
+value = 100.0
+texture_over = ExtResource( 12 )
+texture_progress = ExtResource( 14 )
+texture_progress_offset = Vector2( 74, 971 )
 
-[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/UI"]
-margin_left = 200.0
-margin_top = 5.0
-margin_right = 400.0
-margin_bottom = 55.0
-
-[node name="Label2" type="Label" parent="CanvasLayer/UI"]
-margin_left = 5.0
-margin_top = 53.0
-margin_right = 67.0
-margin_bottom = 84.0
-rect_scale = Vector2( 2, 2 )
-text = "Shoot
-Cooldown"
-
-[node name="Cooldown" type="ProgressBar" parent="CanvasLayer/UI"]
-margin_left = 140.0
-margin_top = 60.0
-margin_right = 340.0
-margin_bottom = 110.0
+[node name="Cooldown" type="TextureProgress" parent="CanvasLayer/UI"]
+margin_right = 40.0
+margin_bottom = 40.0
+value = 100.0
+texture_over = ExtResource( 16 )
+texture_progress = ExtResource( 15 )
+texture_progress_offset = Vector2( 425, 966 )
 
 [node name="DeathScreen" type="TextureRect" parent="CanvasLayer"]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 7 )
@@ -379,6 +370,7 @@ texture_disabled = ExtResource( 8 )
 expand = true
 
 [node name="WinScreen" type="TextureRect" parent="CanvasLayer"]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 10 )
