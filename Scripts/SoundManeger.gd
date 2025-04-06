@@ -34,10 +34,11 @@ func _ready():
 
 
 func _process(_delta):
-	if loader.current_scene.name == "Main":
-		if not player.playing:
-			player.stream = muzik [0]
-			player.play()
+	if is_instance_valid(loader.current_scene):
+		if loader.current_scene.name == "Main":
+			if not player.playing:
+				player.stream = muzik [0]
+				player.play()
 	
 	elif enemy_director.current_enemies.size() > 3:
 		if not player.playing:
