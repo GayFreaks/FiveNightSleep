@@ -124,4 +124,5 @@ func win():
 func _on_DeathButton_pressed():
 	if $UICooldown.is_stopped():
 		state.player_health = 100
+		state.player_weapon = 0
 		loader.goto_scene_path("res://Main.tscn")
