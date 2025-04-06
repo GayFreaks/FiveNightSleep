@@ -22,6 +22,8 @@ onready var enemy_director = get_node("/root/EnemyDirector")
 onready var health_bar = $Control/HealthBar
 onready var animation = $Cat/AnimationPlayer
 onready var audio_player = $AudioStreamPlayer2D
+var init_sprite_scale = Vector2.ONE
+var init_coll_scale = Vector2.ONE
 
 var rng = RandomNumberGenerator.new()
 
@@ -39,6 +41,9 @@ func _ready():
 	health_bar.max_value = health
 	health_bar.value = health
 	health_bar.hide()
+
+	init_sprite_scale = $Cat.scale
+	init_coll_scale = $CollisionShape2D.scale
 
 func _integrate_forces(_state):
 	angular_velocity = 0
@@ -68,11 +73,11 @@ func _physics_process(_delta):
 		animation.play("CatWalk")
 
 	if round(linear_velocity.x) > 0:
-		$Cat.scale.x = -1.5
-		$CollisionShape2D.scale.x = -1
+		$Cat.scale.x = -init_sprite_scale.x
+		$CollisionShape2D.scale.x = -init_coll_scale.x
 	elif round(linear_velocity.x) < 0:
-		$Cat.scale.x = 1.5
-		$CollisionShape2D.scale.x = 1
+		$Cat.scale.x = init_sprite_scale.x
+		$CollisionShape2D.scale.x = init_coll_scale.x
 
 func _on_AttackDetect_body_entered(body:Node):
 	if body.is_in_group("Player"):
