@@ -326,7 +326,7 @@ anims/RESET = SubResource( 4 )
 
 [node name="HardPillow" type="Area2D" parent="Direction"]
 visible = false
-rotation = 0.213619
+rotation = 0.213618
 monitoring = false
 monitorable = false
 script = ExtResource( 6 )
@@ -349,6 +349,7 @@ anims/Attack = SubResource( 5 )
 anims/RESET = SubResource( 6 )
 
 [node name="Bed" type="Area2D" parent="Direction"]
+visible = false
 rotation = 1.20526
 monitoring = false
 monitorable = false
