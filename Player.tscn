@@ -20,7 +20,8 @@ extents = Vector2( 38.6003, 60.8144 )
 
 [sub_resource type="Animation" id=3]
 resource_name = "Attack"
-length = 0.2
+length = 0.3
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:monitoring")
 tracks/0/interp = 1
@@ -40,10 +41,58 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 100, 0 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 100, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../HardPillow:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 69, -20 ), Vector2( 43, -23 ), Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../HardPillow:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 12.2394, 38.792, 99.4248, 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../Bed:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2, 0.25, 0.250319 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 49, 17 ), Vector2( 31, 18 ), Vector2( 0, 0 ), Vector2( 37, 32 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../Bed:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.2, 0.25, 0.250319, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 69.0565, 0.0, 0.0, 4.83896 ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -71,6 +120,54 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../HardPillow:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../HardPillow:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 12.2394 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../Bed:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 31, 18 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../Bed:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 69.0565 ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -229,6 +326,7 @@ anims/RESET = SubResource( 4 )
 
 [node name="HardPillow" type="Area2D" parent="Direction"]
 visible = false
+rotation = 0.213619
 monitoring = false
 monitorable = false
 script = ExtResource( 6 )
@@ -242,7 +340,7 @@ flip_h = true
 flip_v = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Direction/HardPillow"]
-position = Vector2( 71.5729, -42.7673 )
+position = Vector2( 70, -43 )
 rotation = 0.523598
 shape = SubResource( 2 )
 
@@ -251,7 +349,7 @@ anims/Attack = SubResource( 5 )
 anims/RESET = SubResource( 6 )
 
 [node name="Bed" type="Area2D" parent="Direction"]
-visible = false
+rotation = 1.20526
 monitoring = false
 monitorable = false
 script = ExtResource( 6 )
