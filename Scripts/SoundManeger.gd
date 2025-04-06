@@ -32,7 +32,7 @@ func _ready():
 	pass
 
 
-func _musik():
+func _process(_delta):
 	if enemy_director.current_enemies.size() > 3:
 		var random_index = rng.randi_range(2, 4)
 		player.stream = muzik [random_index]
