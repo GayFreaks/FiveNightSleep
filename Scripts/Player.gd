@@ -32,6 +32,7 @@ func _ready():
 	change_weapon(state.player_weapon)
 	health_bar.value = state.player_health
 	$CanvasLayer/WinScreen.hide()
+	$CanvasLayer.show()
 	death_screen.hide()
 
 func get_input():

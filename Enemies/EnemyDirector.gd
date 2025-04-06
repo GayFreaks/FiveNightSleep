@@ -6,6 +6,9 @@ var current_enemies = []
 var current_door = null
 var current_player = null
 
+
+
+
 func _ready():
 	var timer := Timer.new()
 	add_child(timer)
