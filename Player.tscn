@@ -335,6 +335,7 @@ mouse_filter = 2
 [node name="HealthBar" type="TextureProgress" parent="CanvasLayer/UI"]
 margin_right = 40.0
 margin_bottom = 40.0
+mouse_filter = 2
 value = 100.0
 texture_over = ExtResource( 12 )
 texture_progress = ExtResource( 14 )
@@ -343,10 +344,12 @@ texture_progress_offset = Vector2( 74, 971 )
 [node name="Cooldown" type="TextureProgress" parent="CanvasLayer/UI"]
 margin_right = 40.0
 margin_bottom = 40.0
-value = 100.0
+mouse_filter = 2
+rounded = true
 texture_over = ExtResource( 16 )
 texture_progress = ExtResource( 15 )
 texture_progress_offset = Vector2( 425, 966 )
+fill_mode = 5
 
 [node name="DeathScreen" type="TextureRect" parent="CanvasLayer"]
 visible = false
