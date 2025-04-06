@@ -7,7 +7,7 @@ onready var titel_theme = $AudioStreamPlayer
 
 func _ready():
 	Engine.set_target_fps(60)
-	titel_theme.stream [0]
+	titel_theme.stream = main_musik[0]
 	titel_theme.play()
 
 func _on_PlayButton_pressed():
