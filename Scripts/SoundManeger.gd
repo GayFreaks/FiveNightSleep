@@ -42,7 +42,11 @@ func _musik():
 			var random_index = rng.randi_range(5, 6)
 			player.stream = muzik [random_index]
 			player.play()
-	else:
+	elif enemy_director.current_enemies.size() < 0:
 		if not player.playing:
 			player.stream = muzik [7]
+			player.play()
+	elif enemy_director.current_enemies.size() == 0:
+		if not player.playing:
+			player.stream = muzik [1]
 			player.play()
