@@ -1,5 +1,6 @@
 extends Node
 
+onready var main_musik = get_node("/root/Main")
 onready var enemy_director = get_node("/root/EnemyDirector")
 onready var player = $AudioStreamPlayer
 var rng = RandomNumberGenerator.new()
@@ -33,21 +34,22 @@ func _ready():
 
 
 func _process(_delta):
-	if enemy_director.current_enemies.size() > 3:
-		if not player.playing:
-			var random_index = rng.randi_range(2, 4)
-			player.stream = muzik [random_index]
-			player.play()
-	elif enemy_director.current_enemies.size() > 2:
-		if not player.playing:
-			var random_index = rng.randi_range(5, 6)
-			player.stream = muzik [random_index]
-			player.play()
-	elif enemy_director.current_enemies.size() < 0:
-		if not player.playing:
-			player.stream = muzik [7]
-			player.play()
-	elif enemy_director.current_enemies.size() == 0:
-		if not player.playing:
-			player.stream = muzik [1]
-			player.play()
+	if main_musik.titel_theme.playing:
+		if enemy_director.current_enemies.size() > 3:
+			if not player.playing:
+				var random_index = rng.randi_range(2, 4)
+				player.stream = muzik [random_index]
+				player.play()
+		elif enemy_director.current_enemies.size() > 2:
+			if not player.playing:
+				var random_index = rng.randi_range(5, 6)
+				player.stream = muzik [random_index]
+				player.play()
+		elif enemy_director.current_enemies.size() < 0:
+			if not player.playing:
+				player.stream = muzik [7]
+				player.play()
+		elif enemy_director.current_enemies.size() == 0:
+			if not player.playing:
+				player.stream = muzik [1]
+				player.play()
