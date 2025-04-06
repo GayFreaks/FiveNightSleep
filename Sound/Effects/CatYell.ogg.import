@@ -11,5 +11,5 @@ dest_files=[ "res://.import/CatYell.ogg-b8ae4f8d4c8fb918f34c963d87b218c4.oggstr"
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

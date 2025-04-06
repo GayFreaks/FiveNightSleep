@@ -11,5 +11,5 @@ dest_files=[ "res://.import/Combat2a.ogg-f929f18826187f5bb8518c45c6779e75.oggstr
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

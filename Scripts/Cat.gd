@@ -20,6 +20,7 @@ onready var sound_manager = get_node("/root/SoundManeger")
 onready var enemy_director = get_node("/root/EnemyDirector")
 onready var health_bar = $Control/HealthBar
 onready var animation = $Cat/AnimationPlayer
+onready var audio_player = $AudioStreamPlayer2D
 
 var rng = RandomNumberGenerator.new()
 
@@ -38,8 +39,6 @@ func _ready():
 	health_bar.value = health
 	health_bar.hide()
 
-	animation.connect("animation_finished", self, "anim_done")
-
 func _integrate_forces(_state):
 	angular_velocity = 0
 	rotation_degrees = 0
@@ -52,10 +51,11 @@ func damage(amount, knockback):
 	animation.play("CastPushed")
 
 	rng.randomize()
-	if $AudioStreamPlayer2D.playing == false:
+	if not audio_player.playing:
 		var random_index = rng.randi_range(0, 7)
-		$AudioStreamPlayer2D.stream = cat_noises[random_index]
-		$AudioStreamPlayer2D.play()
+		audio_player.stream = cat_noises[random_index]
+		audio_player.play()
+	
 	if health <= 0:
 		enemy_director.enemy_died(self)
 		queue_free()
@@ -65,19 +65,14 @@ func damage(amount, knockback):
 func _physics_process(_delta):
 	apply_central_impulse((target_location - position).normalized() * speed)
 
-	if animation.current_animation != "CastPushed":
-		animation.play("CatWalk")
-	
-		if round(linear_velocity.x) > 0:
-			$Cat.scale.x = -1.5
-			$CollisionShape2D.scale.x = -1
-		elif round(linear_velocity.x) < 0:
-			$Cat.scale.x = 1.5
-			$CollisionShape2D.scale.x = 1
+	animation.play("CatWalk")
 
-func anim_done(anim_name):
-	if anim_name == "CastPushed":
-		animation.current_animation = ""
+	if round(linear_velocity.x) > 0:
+		$Cat.scale.x = -1.5
+		$CollisionShape2D.scale.x = -1
+	elif round(linear_velocity.x) < 0:
+		$Cat.scale.x = 1.5
+		$CollisionShape2D.scale.x = 1
 
 func _on_AttackDetect_body_entered(body:Node):
 	if body.is_in_group("Player"):

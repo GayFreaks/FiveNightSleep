@@ -11,5 +11,5 @@ dest_files=[ "res://.import/CatHiss2.ogg-872f0880c8149082d6377889b4ca0698.oggstr
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

@@ -11,5 +11,5 @@ dest_files=[ "res://.import/PillowWooshLite.ogg-8f0a25460cf10017b43a728402a5017a
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

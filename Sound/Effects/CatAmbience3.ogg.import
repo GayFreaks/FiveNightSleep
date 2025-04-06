@@ -11,5 +11,5 @@ dest_files=[ "res://.import/CatAmbience3.ogg-1ec064a710ef1865eaacf899d1a50e85.og
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
