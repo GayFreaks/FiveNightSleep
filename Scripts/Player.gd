@@ -126,7 +126,7 @@ func _physics_process(_delta):
 	else:
 		animation.play("RESET")
 
-	cooldown_display.value = cooldown.time_left/cooldown.wait_time
+	cooldown_display.value = (cooldown.wait_time-cooldown.time_left) * 100
 
 func damage(amount):
 	state.player_health -= amount
