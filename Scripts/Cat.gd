@@ -96,4 +96,7 @@ func _on_AnimationPlayer_animation_finished(anim_name:String):
 
 func _on_DeathPlayer_animation_finished(anim_name:String):
 	if anim_name == "Boom":
-		queue_free()
+		if is_in_group("Boss"):
+			enemy_director.current_player.win()
+		else:
+			queue_free()
