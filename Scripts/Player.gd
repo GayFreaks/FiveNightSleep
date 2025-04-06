@@ -1,6 +1,8 @@
 extends KinematicBody2D
 class_name Player
 
+export(PackedScene) var bullet_scene = null
+
 onready var loader = get_node("/root/Loading")
 onready var state = get_node("/root/GameState")
 onready var enemy_director = get_node("/root/EnemyDirector")
@@ -82,6 +84,12 @@ func _unhandled_input(event):
 			if event.button_index == 1 && event.pressed:
 				if current_weapon != null:
 					current_weapon.thrust()
+			elif event.button_index == 2 && event.pressed:
+				if bullet_scene != null:
+					var bullet = bullet_scene.instance()
+					get_parent().add_child(bullet)
+					bullet.global_position = direction_object.global_position
+					bullet.global_rotation = direction_object.global_rotation
 
 func _physics_process(_delta):
 	velocity = Vector2.ZERO

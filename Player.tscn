@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Items/HardPillow.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Scripts/melee_weapon.gd" type="Script" id=6]
 [ext_resource path="res://Assets/UI/DeathScreen.png" type="Texture" id=7]
 [ext_resource path="res://Assets/UI/You_Lost.png" type="Texture" id=8]
+[ext_resource path="res://Nodes/Bullet.tscn" type="PackedScene" id=9]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 50.0
@@ -72,6 +73,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=5]
 resource_name = "Attack"
+length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:monitoring")
 tracks/0/interp = 1
@@ -79,10 +81,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ false, true, false ]
+"values": [ true, false ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:position")
@@ -91,7 +93,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 10, 0 ), Vector2( 0, 0 ) ]
@@ -133,10 +135,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ false, true, false ]
+"values": [ true, false ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:position")
@@ -182,6 +184,7 @@ tracks/1/keys = {
 collision_layer = 2
 collision_mask = 5
 script = ExtResource( 1 )
+bullet_scene = ExtResource( 9 )
 
 [node name="ShootCooldown" type="Timer" parent="."]
 
@@ -222,6 +225,7 @@ visible = false
 monitoring = false
 monitorable = false
 script = ExtResource( 6 )
+damage = 20
 
 [node name="Sprite" type="Sprite" parent="Direction/HardPillow"]
 position = Vector2( 75, -45 )
@@ -244,6 +248,7 @@ visible = false
 monitoring = false
 monitorable = false
 script = ExtResource( 6 )
+damage = 40
 
 [node name="Sprite" type="Sprite" parent="Direction/Bed"]
 position = Vector2( 107, -94 )
