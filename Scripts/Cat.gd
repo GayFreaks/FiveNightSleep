@@ -62,7 +62,7 @@ func damage(amount, knockback):
 	
 	if health <= 0:
 		enemy_director.enemy_died(self)
-		queue_free()
+		$DeathPlayer.play("Boom")
 
 	apply_central_impulse(knockback)
 
@@ -93,3 +93,7 @@ func _on_AttackDetect_body_entered(body:Node):
 func _on_AnimationPlayer_animation_finished(anim_name:String):
 	if anim_name == "CatAttack":
 		animation.play("RESET")
+
+func _on_DeathPlayer_animation_finished(anim_name:String):
+	if anim_name == "Boom":
+		queue_free()

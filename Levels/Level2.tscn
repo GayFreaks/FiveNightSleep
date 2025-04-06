@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assets/Levels/Level2.png" type="Texture" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Enemies/Cat.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Nodes/Door.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Nodes/Key.tscn" type="PackedScene" id=5]
 
 [node name="Level2" type="Node2D"]
 position = Vector2( 25, -38 )
@@ -19,14 +20,10 @@ polygon = PoolVector2Array( -183, -1729, -265, -668, -803, -712, -976, -646, -10
 [node name="ElementContainer" type="YSort" parent="."]
 position = Vector2( -30.1675, 28.0588 )
 
+[node name="Key" parent="ElementContainer" instance=ExtResource( 5 )]
+
 [node name="Cat" parent="ElementContainer" instance=ExtResource( 3 )]
-position = Vector2( 55.8132, -263.906 )
-
-[node name="Cat2" parent="ElementContainer" instance=ExtResource( 3 )]
-position = Vector2( 566.027, 166.558 )
-
-[node name="Cat3" parent="ElementContainer" instance=ExtResource( 3 )]
-position = Vector2( -656.423, -308.382 )
+position = Vector2( -11.8325, -319.059 )
 
 [node name="Door" parent="ElementContainer" instance=ExtResource( 4 )]
 position = Vector2( -100.832, -875.059 )
