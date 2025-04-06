@@ -19,6 +19,16 @@ onready var animation = $Sprite/AnimationPlayer
 # onready var right_arm = $"Sprite/Skeleton2D/Hip/Chest/Arm R"
 onready var bullet_cooldown = $ShootCooldown
 
+var rng = RandomNumberGenerator.new()
+
+var weapon_sound = [
+	preload ("res://Sound/Effects/PillowWooshLite2.ogg.ogg"),
+	preload ("res://Sound/Effects/PillowWooshLite3.ogg"),
+	preload ("res://Sound/Effects/PillowWooshLite4.ogg"),
+	preload ("res://Sound/Effects/PillowWooshLite5.ogg"),
+	preload ("res://Sound/Effects/PillowWooshLite.ogg")
+]
+
 var current_weapon = null
 var dashing = false
 
@@ -86,13 +96,23 @@ func _unhandled_input(event):
 			if event.button_index == 1 && event.pressed:
 				if current_weapon != null:
 					current_weapon.thrust()
+					
+					rng.randomize()
+					var random_index = rng.randi_range(0, 4)
+					$AudioStreamPlayer.stream = weapon_sound[random_index]
+					$AudioStreamPlayer.play()
 			elif event.button_index == 2 && event.pressed:
 				if bullet_scene != null && bullet_cooldown.is_stopped():
 					var bullet = bullet_scene.instance()
 					get_parent().add_child(bullet)
 					bullet.global_position = direction_object.global_position
 					bullet.global_rotation = direction_object.global_rotation
-
+					
+					rng.randomize()
+					var random_index = rng.randi_range(0, 4)
+					$AudioStreamPlayer.stream = weapon_sound[random_index]
+					$AudioStreamPlayer.play()
+					
 					bullet_cooldown.start()
 
 func _physics_process(_delta):

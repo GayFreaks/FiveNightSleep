@@ -14,6 +14,7 @@ var cat_noises = [
 	preload("res://Sound/Effects/CatHiss.ogg"),
 	preload("res://Sound/Effects/CatYell2.ogg"),
 	preload("res://Sound/Effects/CatYell.ogg"),
+	preload("res://Sound/Effects/CatUnity.ogg")
 ]
 
 onready var sound_manager = get_node("/root/SoundManeger")
@@ -52,7 +53,7 @@ func damage(amount, knockback):
 
 	rng.randomize()
 	if not audio_player.playing:
-		var random_index = rng.randi_range(0, 7)
+		var random_index = rng.randi_range(0, 8)
 		audio_player.stream = cat_noises[random_index]
 		audio_player.play()
 	
