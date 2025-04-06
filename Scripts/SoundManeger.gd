@@ -22,6 +22,7 @@ var muzik = [
 	preload("res://Sound/Music/Combat2a.ogg"),
 	preload("res://Sound/Music/Combat2b.ogg"),
 	preload("res://Sound/Music/Combat3.ogg"),
+	preload ("res://Sound/Music/Boss theme 2.ogg")
 ]
 
 
@@ -38,6 +39,10 @@ func change_music():
 				player.stop()
 				player.stream = muzik[0]
 				player.play()
+		elif loader.current_scene.name == "Level9":
+			player.stop()
+			player.stream = muzik[8]
+			player.play()
 		elif enemy_director.current_enemies.size() > 3:
 			player.stop()
 			var random_index = rng.randi_range(2, 4)
