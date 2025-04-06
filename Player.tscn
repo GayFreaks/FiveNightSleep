@@ -398,6 +398,9 @@ texture_hover = ExtResource( 11 )
 texture_disabled = ExtResource( 11 )
 expand = true
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -3.541
+
 [connection signal="body_entered" from="Direction/Pillow" to="Direction/Pillow" method="_on_body_entered"]
 [connection signal="body_entered" from="Direction/HardPillow" to="Direction/HardPillow" method="_on_body_entered"]
 [connection signal="body_entered" from="Direction/Bed" to="Direction/Bed" method="_on_body_entered"]
