@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Assets/Levels/Level2.png" type="Texture" id=1]
-[ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Enemies/Cat.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Nodes/Door.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Nodes/Key.tscn" type="PackedScene" id=5]
@@ -23,11 +22,11 @@ position = Vector2( -30.1675, 28.0588 )
 [node name="Key" parent="ElementContainer" instance=ExtResource( 5 )]
 
 [node name="Cat" parent="ElementContainer" instance=ExtResource( 3 )]
-position = Vector2( -11.8325, -319.059 )
+position = Vector2( 683.167, -64.0588 )
+
+[node name="Cat3" parent="ElementContainer" instance=ExtResource( 3 )]
+position = Vector2( -613.833, -394.059 )
 
 [node name="Door" parent="ElementContainer" instance=ExtResource( 4 )]
 position = Vector2( -100.832, -875.059 )
 level_name = "Level3"
-
-[node name="Player" parent="ElementContainer" instance=ExtResource( 2 )]
-position = Vector2( -697, 416 )
