@@ -76,6 +76,11 @@ func _physics_process(_delta):
 
 func _on_AttackDetect_body_entered(body:Node):
 	if body.is_in_group("Player"):
-		sound_manager.player.play()
 		animation.play("CastPushed")
 		body.damage(given_damage)
+		
+		rng.randomize()
+		if not audio_player.playing:
+			var random_index = rng.randi_range(0, 7)
+			audio_player.stream = cat_noises[random_index]
+			audio_player.play()
