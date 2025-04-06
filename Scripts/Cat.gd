@@ -49,8 +49,6 @@ func damage(amount, knockback):
 	health_bar.value = health
 	health_bar.show()
 
-	animation.play("CastPushed")
-
 	rng.randomize()
 	if not audio_player.playing:
 		var random_index = rng.randi_range(0, 8)
@@ -66,7 +64,8 @@ func damage(amount, knockback):
 func _physics_process(_delta):
 	apply_central_impulse((target_location - position).normalized() * speed)
 
-	animation.play("CatWalk")
+	if animation.current_animation != "CatAttack":
+		animation.play("CatWalk")
 
 	if round(linear_velocity.x) > 0:
 		$Cat.scale.x = -1.5
@@ -77,7 +76,7 @@ func _physics_process(_delta):
 
 func _on_AttackDetect_body_entered(body:Node):
 	if body.is_in_group("Player"):
-		animation.play("CastPushed")
+		animation.play("CatAttack")
 		body.damage(given_damage)
 		
 		rng.randomize()
@@ -85,3 +84,7 @@ func _on_AttackDetect_body_entered(body:Node):
 			var random_index = rng.randi_range(0, 7)
 			audio_player.stream = cat_noises[random_index]
 			audio_player.play()
+
+func _on_AnimationPlayer_animation_finished(anim_name:String):
+	if anim_name == "CatAttack":
+		animation.play("RESET")

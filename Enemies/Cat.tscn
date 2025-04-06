@@ -26,6 +26,9 @@ shape = SubResource( 1 )
 [node name="Cat" parent="." instance=ExtResource( 1 )]
 scale = Vector2( 2, 2 )
 
+[node name="AnimationPlayer" parent="Cat" index="0"]
+blend_times = [ "CatAttack", "CatWalk", 1.0, "CatWalk", "CatAttack", 1.0 ]
+
 [node name="Control" type="Control" parent="."]
 margin_left = -110.0
 margin_top = -150.0
@@ -48,4 +51,7 @@ shape = SubResource( 2 )
 volume_db = -3.496
 attenuation = 0.0507663
 
+[connection signal="animation_finished" from="Cat/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="body_entered" from="AttackDetect" to="." method="_on_AttackDetect_body_entered"]
+
+[editable path="Cat"]
