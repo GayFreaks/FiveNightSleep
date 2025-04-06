@@ -189,6 +189,7 @@ script = ExtResource( 1 )
 bullet_scene = ExtResource( 9 )
 
 [node name="ShootCooldown" type="Timer" parent="."]
+one_shot = true
 
 [node name="UICooldown" type="Timer" parent="."]
 wait_time = 0.5
