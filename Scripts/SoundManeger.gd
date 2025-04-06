@@ -39,9 +39,13 @@ func _process(_delta):
 			if not player.playing:
 				player.stream = muzik [0]
 				player.play()
-	
 	elif enemy_director.current_enemies.size() > 3:
 		if not player.playing:
+			var random_index = rng.randi_range(2, 4)
+			player.stream = muzik [random_index]
+			player.play()
+		else:
+			player.stop()
 			var random_index = rng.randi_range(2, 4)
 			player.stream = muzik [random_index]
 			player.play()
