@@ -21,6 +21,7 @@ polygon = PoolVector2Array( -36, -927, -13, -344, -249, -315, -421, -251, -544, 
 
 [node name="Door" parent="ElementContainer" instance=ExtResource( 2 )]
 position = Vector2( 536, 132 )
+locked = false
 level_name = "Level7"
 
 [node name="Item" parent="ElementContainer" instance=ExtResource( 3 )]

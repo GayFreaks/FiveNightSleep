@@ -24,5 +24,3 @@ margin_bottom = 40.0
 texture_under = ExtResource( 4 )
 texture_progress = ExtResource( 3 )
 texture_progress_offset = Vector2( 706, 501 )
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

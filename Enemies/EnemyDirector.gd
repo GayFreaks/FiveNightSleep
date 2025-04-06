@@ -4,6 +4,7 @@ class_name EnemyDirectory
 var enemy_index = 0
 var current_enemies = []
 var current_door = null
+var current_key = null
 var current_player = null
 
 func _ready():
@@ -17,8 +18,9 @@ func enemy_died(enemy):
 	if enemy in current_enemies:
 		current_enemies.erase(enemy)
 		if current_enemies.size() < 1:
-			if current_door != null:
-				current_door.change_lock(false)
+			if not enemy.is_in_group("Boss"):
+				if current_key != null && is_instance_valid(current_key):
+					current_key.spawn(enemy.position)
 
 func clear_enemies():
 	for i in current_enemies:
