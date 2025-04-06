@@ -3,15 +3,9 @@ class_name EnemyDirectory
 
 var enemy_index = 0
 var current_enemies = []
-var current_door = null setget door_set
+var current_door = null
 var current_key = null
 var current_player = null
-
-func door_set(new_door):
-	if current_key != null && is_instance_valid(current_key) && new_door != null && is_instance_valid(new_door):
-		current_key.current_door = new_door
-
-	current_door = new_door
 
 func _ready():
 	var timer := Timer.new()
