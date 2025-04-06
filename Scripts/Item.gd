@@ -8,14 +8,17 @@ onready var sprite = $Sprite
 export var item_index = 0
 
 var items = [
-	[preload("res://Assets/Items/Pillow.png")],
-	[preload("res://Assets/Items/HardPillow.png")],
-	[preload("res://Assets/Items/Bed.png")]
+	[preload("res://Assets/Items/Pillow.png"), 0.2, 0.2],
+	[preload("res://Assets/Items/HardPillow.png"), 0.2, 0.2],
+	[preload("res://Assets/Items/Bed.png"), 0.2, 0.2]
 ]
 
 func _ready():
 	enemy_director.current_enemies.append(self)
-	sprite.texture = items[item_index][0]
+	var texture = items[item_index][0]
+	sprite.texture = texture
+	sprite.scale.x = items[item_index][1]
+	sprite.scale.y = items[item_index][2]
 
 func recalc_target():
 	pass
