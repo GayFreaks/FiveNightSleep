@@ -50,5 +50,3 @@ position = Vector2( -24, 640 )
 position = Vector2( 6, -652 )
 locked = false
 level_name = "Level2"
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
