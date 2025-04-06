@@ -11,5 +11,5 @@ dest_files=[ "res://.import/TitelTheme.ogg-996b7b2ead0b6b51809ea09e250ce1da.oggs
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0

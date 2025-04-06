@@ -50,12 +50,8 @@ func change_music():
 			player.play()
 		elif enemy_director.current_enemies.size() > 2:
 			player.stop()
-			var random_index = rng.randi_range(5, 6)
+			var random_index = rng.randi_range(5, 7)
 			player.stream = muzik[random_index]
-			player.play()
-		elif enemy_director.current_enemies.size() > 0:
-			player.stop()
-			player.stream = muzik[7]
 			player.play()
 		elif enemy_director.current_enemies.size() == 0:
 			player.stop()
