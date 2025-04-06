@@ -30,7 +30,7 @@ position = Vector2( -656.423, -308.382 )
 
 [node name="Door" parent="ElementContainer" instance=ExtResource( 4 )]
 position = Vector2( -100.832, -875.059 )
-level_name = "Finish"
+level_name = "Level3"
 
 [node name="Player" parent="ElementContainer" instance=ExtResource( 2 )]
 position = Vector2( -697, 416 )

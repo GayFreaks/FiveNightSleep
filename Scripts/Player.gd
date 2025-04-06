@@ -109,13 +109,16 @@ func damage(amount):
 	state.player_health -= amount
 
 	if state.player_health <= 0:
+		$UICooldown.start()
 		death_screen.show()
 
 	health_bar.value = state.player_health
 
 func win():
+	$UICooldown.start()
 	$CanvasLayer/WinScreen.show()
 
 func _on_DeathButton_pressed():
-	state.player_health = 100
-	loader.goto_scene_path("res://Main.tscn")
+	if $UICooldown.is_stopped():
+		state.player_health = 100
+		loader.goto_scene_path("res://Main.tscn")
