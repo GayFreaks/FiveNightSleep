@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Items/HardPillow.png" type="Texture" id=2]
@@ -18,6 +18,40 @@
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 50.0
+
+[sub_resource type="Shader" id=9]
+code = "shader_type canvas_item;
+
+uniform float hit_effect : hint_range(0,1) = 0.0;
+uniform float flash_speed = 30.0;
+uniform vec4 flash_color : hint_color = vec4(1.0, 0.0, 0.0, 1.0);
+
+float rand(vec2 co) {
+	return fract(sin(dot(co, vec2(12.9898,78.233))) * 43758.5453);
+}
+
+void fragment() {
+	vec4 original_color = texture(TEXTURE, UV);
+		
+	if (hit_effect > 0.0) {
+		float flash = sin(TIME * flash_speed) * 0.5 + 0.5;
+		flash *= original_color.a; 
+		
+		vec4 final_color = mix(original_color, flash_color, flash);
+		final_color = mix(original_color, final_color, hit_effect);
+		final_color.a = original_color.a; 
+		
+		COLOR = final_color;
+	} else {
+		COLOR = original_color;
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id=10]
+shader = SubResource( 9 )
+shader_param/hit_effect = 0.0
+shader_param/flash_speed = 30.0
+shader_param/flash_color = Color( 1, 0, 0, 1 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 38.6003, 60.8144 )
@@ -249,11 +283,16 @@ one_shot = true
 wait_time = 0.5
 one_shot = true
 
+[node name="FlashTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 60 )
 shape = SubResource( 1 )
 
 [node name="Sprite" parent="." instance=ExtResource( 3 )]
+material = SubResource( 10 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -397,6 +436,7 @@ expand = true
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = -3.541
 
+[connection signal="timeout" from="FlashTimer" to="." method="_on_FlashTimer_timeout"]
 [connection signal="body_entered" from="Direction/Pillow" to="Direction/Pillow" method="_on_body_entered"]
 [connection signal="body_entered" from="Direction/HardPillow" to="Direction/HardPillow" method="_on_body_entered"]
 [connection signal="body_entered" from="Direction/Bed" to="Direction/Bed" method="_on_body_entered"]

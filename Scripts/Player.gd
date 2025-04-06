@@ -18,6 +18,7 @@ onready var animation = $Sprite/AnimationPlayer
 # onready var left_arm = $"Sprite/Skeleton2D/Hip/Chest/Arm L"
 # onready var right_arm = $"Sprite/Skeleton2D/Hip/Chest/Arm R"
 onready var bullet_cooldown = $ShootCooldown
+var flash_shader = null
 
 var rng = RandomNumberGenerator.new()
 
@@ -44,6 +45,8 @@ func _ready():
 	$CanvasLayer/WinScreen.hide()
 	$CanvasLayer.show()
 	death_screen.hide()
+
+	flash_shader = $Sprite.get_material()
 
 func get_input():
 	var movement_direction = Vector2(Input.get_axis("Move_Left", "Move_Right"), Input.get_axis("Move_Up", "Move_Down"))
@@ -135,6 +138,9 @@ func damage(amount):
 		$UICooldown.start()
 		death_screen.show()
 
+	flash_shader.set_shader_param("hit_effect", 1.0)
+	$FlashTimer.start()
+
 	health_bar.value = state.player_health
 
 func win():
@@ -146,3 +152,6 @@ func _on_DeathButton_pressed():
 		state.player_health = 100
 		state.player_weapon = 0
 		loader.goto_scene_path("res://Main.tscn")
+
+func _on_FlashTimer_timeout():
+	flash_shader.set_shader_param("hit_effect", 0.0)
