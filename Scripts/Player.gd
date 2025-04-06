@@ -82,10 +82,6 @@ func _unhandled_input(event):
 			if event.button_index == 1 && event.pressed:
 				if current_weapon != null:
 					current_weapon.thrust()
-	
-	if event.is_action_pressed("Dash") && not dashing:
-		dashing = true
-		
 
 func _physics_process(_delta):
 	velocity = Vector2.ZERO
@@ -93,13 +89,10 @@ func _physics_process(_delta):
 		velocity = get_input().normalized() * speed
 	velocity = move_and_slide(velocity)
 
-	if dashing:
-		animation.play("JimmyDash")
+	if round(velocity.length()) != 0:
+		animation.play("JimmyWalk")
 	else:
-		if round(velocity.length()) != 0:
-			animation.play("JimmyWalk")
-		else:
-			animation.play("RESET")
+		animation.play("RESET")
 
 	cooldown_display.value = cooldown.time_left/cooldown.wait_time
 
