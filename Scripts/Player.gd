@@ -31,6 +31,7 @@ func _ready():
 	enemy_director.current_player = self
 	change_weapon(weapon_index)
 	health_bar.value = state.player_health
+	$CanvasLayer/WinScreen.hide()
 	death_screen.hide()
 
 func get_input():
@@ -111,6 +112,9 @@ func damage(amount):
 		death_screen.show()
 
 	health_bar.value = state.player_health
+
+func win():
+	$CanvasLayer/WinScreen.show()
 
 func _on_DeathButton_pressed():
 	state.player_health = 100
