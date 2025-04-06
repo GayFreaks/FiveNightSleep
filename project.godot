@@ -25,6 +25,11 @@ _global_script_classes=[ {
 "path": "res://Enemies/EnemyDirector.gd"
 }, {
 "base": "Area2D",
+"class": "Item",
+"language": "GDScript",
+"path": "res://Scripts/Item.gd"
+}, {
+"base": "Area2D",
 "class": "MeleeWeaponn",
 "language": "GDScript",
 "path": "res://Scripts/melee_weapon.gd"
@@ -38,6 +43,7 @@ _global_script_class_icons={
 "Bullet": "",
 "Cat": "",
 "EnemyDirectory": "",
+"Item": "",
 "MeleeWeaponn": "",
 "Player": ""
 }
@@ -102,3 +108,7 @@ Dash={
 
 2d/default_gravity=0
 2d/default_gravity_vector=Vector2( 0, 0 )
+
+[rendering]
+
+environment/default_clear_color=Color( 0.0823529, 0.105882, 0.329412, 1 )

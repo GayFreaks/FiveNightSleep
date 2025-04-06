@@ -28,8 +28,10 @@ func change_lock(new_status):
 
 func _on_Door_body_entered(body:Node):
 	if body.is_in_group("Player"):
+		enemy_director.current_enemies = []
+		enemy_director.current_door = null
+
 		if level_name == "Finish":
 			enemy_director.current_player.win()
 		else:
-			enemy_director.current_door = null
 			loader.goto_scene_path("res://Levels/" + level_name + ".tscn")

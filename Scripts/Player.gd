@@ -17,8 +17,8 @@ onready var death_screen = $CanvasLayer/DeathScreen
 onready var animation = $Sprite/AnimationPlayer
 # onready var left_arm = $"Sprite/Skeleton2D/Hip/Chest/Arm L"
 # onready var right_arm = $"Sprite/Skeleton2D/Hip/Chest/Arm R"
+onready var bullet_cooldown = $ShootCooldown
 
-var weapon_index = 0
 var current_weapon = null
 var dashing = false
 
@@ -29,9 +29,10 @@ var mouse_rot_rel_player
 
 func _ready():
 	enemy_director.current_player = self
-	change_weapon(weapon_index)
+	change_weapon(state.player_weapon)
 	health_bar.value = state.player_health
 	$CanvasLayer/WinScreen.hide()
+	$CanvasLayer.show()
 	death_screen.hide()
 
 func get_input():
@@ -44,7 +45,7 @@ func change_weapon(new_weapon):
 		print("new_weapon invalid 1")
 		return
 
-	weapon_index = new_weapon
+	state.player_weapon = new_weapon
 
 	if current_weapon != null:
 		current_weapon.hide()
@@ -86,11 +87,13 @@ func _unhandled_input(event):
 				if current_weapon != null:
 					current_weapon.thrust()
 			elif event.button_index == 2 && event.pressed:
-				if bullet_scene != null:
+				if bullet_scene != null && bullet_cooldown.is_stopped():
 					var bullet = bullet_scene.instance()
 					get_parent().add_child(bullet)
 					bullet.global_position = direction_object.global_position
 					bullet.global_rotation = direction_object.global_rotation
+
+					bullet_cooldown.start()
 
 func _physics_process(_delta):
 	velocity = Vector2.ZERO
@@ -109,13 +112,16 @@ func damage(amount):
 	state.player_health -= amount
 
 	if state.player_health <= 0:
+		$UICooldown.start()
 		death_screen.show()
 
 	health_bar.value = state.player_health
 
 func win():
+	$UICooldown.start()
 	$CanvasLayer/WinScreen.show()
 
 func _on_DeathButton_pressed():
-	state.player_health = 100
-	loader.goto_scene_path("res://Main.tscn")
+	if $UICooldown.is_stopped():
+		state.player_health = 100
+		loader.goto_scene_path("res://Main.tscn")
