@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Assets/Levels/Level9.png" type="Texture" id=1]
 [ext_resource path="res://Nodes/Door.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Enemies/Cat.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Enemies/BossCat.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=4]
 
 [node name="Level9" type="Node2D"]
@@ -19,15 +19,6 @@ polygon = PoolVector2Array( 456, -1560, 592, -592, 280, -480, -64, -272, -360, -
 
 [node name="ElementContainer" type="YSort" parent="."]
 
-[node name="Cat" parent="ElementContainer" instance=ExtResource( 3 )]
-position = Vector2( 1256, 274 )
-
-[node name="Cat2" parent="ElementContainer" instance=ExtResource( 3 )]
-position = Vector2( 376, 760 )
-
-[node name="Cat3" parent="ElementContainer" instance=ExtResource( 3 )]
-position = Vector2( -544, 496 )
-
 [node name="Door" parent="ElementContainer" instance=ExtResource( 2 )]
 position = Vector2( 1136, -120 )
 level_name = "Finish"
@@ -35,11 +26,5 @@ level_name = "Finish"
 [node name="Player" parent="ElementContainer" instance=ExtResource( 4 )]
 position = Vector2( 768, 1368 )
 
-[node name="Cat4" parent="ElementContainer" instance=ExtResource( 3 )]
-position = Vector2( 1024, 704 )
-
-[node name="Cat5" parent="ElementContainer" instance=ExtResource( 3 )]
-position = Vector2( 1472, 1008 )
-
-[node name="Cat6" parent="ElementContainer" instance=ExtResource( 3 )]
-position = Vector2( -168, 799 )
+[node name="Cat" parent="ElementContainer" instance=ExtResource( 3 )]
+position = Vector2( 1098, 485 )
