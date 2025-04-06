@@ -1,6 +1,7 @@
 extends Area2D
 class_name Item
 
+onready var state = get_node("/root/GameState")
 onready var enemy_director = get_node("/root/EnemyDirector")
 onready var collision = $CollisionShape2D
 onready var sprite = $Sprite
@@ -25,6 +26,7 @@ func recalc_target():
 
 func _on_Item_body_entered(body:Node):
 	if body.is_in_group("Player"):
+		state.player_health = 100
 		body.change_weapon(item_index)
 		enemy_director.enemy_died(self)
 		queue_free()

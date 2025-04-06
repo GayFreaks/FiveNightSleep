@@ -54,7 +54,7 @@ func change_weapon(new_weapon):
 	if typeof(new_weapon) != TYPE_INT:
 		print("new_weapon invalid 1")
 		return
-
+	
 	state.player_weapon = new_weapon
 
 	if current_weapon != null:
