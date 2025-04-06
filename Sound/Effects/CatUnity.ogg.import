@@ -11,5 +11,5 @@ dest_files=[ "res://.import/CatUnity.ogg-caccadf34ff9adfeec4cf4aa86d79de2.oggstr
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
