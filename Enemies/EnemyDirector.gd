@@ -6,9 +6,6 @@ var current_enemies = []
 var current_door = null
 var current_player = null
 
-
-
-
 func _ready():
 	var timer := Timer.new()
 	add_child(timer)
@@ -22,6 +19,12 @@ func enemy_died(enemy):
 		if current_enemies.size() < 1:
 			if current_door != null:
 				current_door.change_lock(false)
+
+func clear_enemies():
+	for i in current_enemies:
+		if i != null && is_instance_valid(i):
+			enemy_died(i)
+			i.queue_free()
 
 func enemy_calc():
 	for i in current_enemies:

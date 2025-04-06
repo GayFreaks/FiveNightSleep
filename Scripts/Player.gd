@@ -137,6 +137,7 @@ func damage(amount):
 	if state.player_health <= 0:
 		$UICooldown.start()
 		death_screen.show()
+		enemy_director.clear_enemies()
 
 	flash_shader.set_shader_param("hit_effect", 1.0)
 	$FlashTimer.start()
