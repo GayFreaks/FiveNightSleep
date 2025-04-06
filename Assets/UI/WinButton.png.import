@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/You_Lost.png-ac65adc8622bc2e22a91cdd68e8e778e.stex"
+path="res://.import/WinButton.png-0fefb4a192cc13897f5a962d08a71c7e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/You_Lost.png"
-dest_files=[ "res://.import/You_Lost.png-ac65adc8622bc2e22a91cdd68e8e778e.stex" ]
+source_file="res://Assets/UI/WinButton.png"
+dest_files=[ "res://.import/WinButton.png-0fefb4a192cc13897f5a962d08a71c7e.stex" ]
 
 [params]
 

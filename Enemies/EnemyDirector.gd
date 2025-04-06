@@ -22,4 +22,7 @@ func enemy_died(enemy):
 
 func enemy_calc():
 	for i in current_enemies:
-		i.recalc_target()
+		if i != null:
+			i.recalc_target()
+		else:
+			current_enemies.erase(i)

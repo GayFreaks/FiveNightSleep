@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Main_Screen.png-26f7911c8f0dacf5c0108a8148bcf308.stex"
+path="res://.import/LossButton.png-9627ad2c28a1d929f121c1c7b5a6813e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/Main_Screen.png"
-dest_files=[ "res://.import/Main_Screen.png-26f7911c8f0dacf5c0108a8148bcf308.stex" ]
+source_file="res://Assets/UI/LossButton.png"
+dest_files=[ "res://.import/LossButton.png-9627ad2c28a1d929f121c1c7b5a6813e.stex" ]
 
 [params]
 
